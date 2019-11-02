@@ -30,7 +30,7 @@ name: Testing and building my Unity project
 on: push
 jobs:
   test:
-    name: Hello world action
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
