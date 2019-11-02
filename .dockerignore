@@ -1,0 +1,5 @@
+# ignore all files by default
+*
+
+# include required actions with exceptions
+!test/
