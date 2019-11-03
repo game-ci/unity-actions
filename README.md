@@ -6,8 +6,8 @@ Feel free to contribute.
 
 ## Jobs
 
-- [ ] Checkout project
-- [ ] Acquire license
+- [X] Checkout project
+- [X] Activate license
 - [ ] Open project in Unity
 - [ ] Install dependencies
 - [ ] Perform test suite
@@ -25,33 +25,9 @@ Feel free to contribute.
 
 ## How to use
 
-Add the following yaml to your workflow in `.github/workflows/main.yml`
+Create a workflow in `.github/workflows/main.yml`.
 
-```yaml
-name: Testing and building my Unity project
-on: push
-jobs:
-  test:
-    name: Test
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@master
-
-      - name: Get license
-        uses: webbertakken/unity-actions/get-license@master
-        env:
-          UNITY_USERNAME: ${{ secrets.UNITY_USERNAME }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_USERNAME }}
-
-      - name: Test project
-        uses: webbertakken/unity-actions/test@master
-        env:
-          FOLDER: .
-          PLATFORM: playmode
-```
+- Activate license: [readme](./activate/README.md).
 
 ## Credits
 
