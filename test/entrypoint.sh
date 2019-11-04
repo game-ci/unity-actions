@@ -14,12 +14,14 @@ xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     -nographics \
     -logFile /dev/stdout \
     -quit \
-    -username "$UNITY_EMAIL" \
-    -password "$UNITY_PASSWORD" \
     -projectPath "$GITHUB_WORKSPACE" \
     -testPlatform $TEST_PLATFORM \
     -testResults "$GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml" \
     -runTests
+
+# For if needed
+#    -username "$UNITY_EMAIL" \
+#    -password "$UNITY_PASSWORD" \
 
 UNITY_EXIT_CODE=$?
 
