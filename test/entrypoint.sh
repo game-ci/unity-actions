@@ -1,18 +1,25 @@
 #!/usr/bin/env bash
 
-set -x
+set -e
 
 echo "$UNITY_LICENSE" > /root/.local/share/unity3d/Unity/Unity_lic.ulf
+
+set -x
 
 echo "Testing for $TEST_PLATFORM"
 
 ${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' /opt/Unity/Editor/Unity} \
-  -projectPath $(pwd) \
+  -batchmode \
+  -nographics \
+  -logFile /dev/stdout \
+  -batchmode \
+  -nographics \
+  -verbose \
+  -quit \
+  -projectPath $GITHUB_WORKSPACE \
   -runTests \
   -testPlatform $TEST_PLATFORM \
-  -testResults $(pwd)/$TEST_PLATFORM-results.xml \
-  -logFile /dev/stdout \
-  -batchmode
+  -testResults $GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml
 
 UNITY_EXIT_CODE=$?
 
