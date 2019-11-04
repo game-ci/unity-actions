@@ -8,18 +8,18 @@ set -x
 
 echo "Testing for $TEST_PLATFORM"
 
-${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' /opt/Unity/Editor/Unity} \
-  -batchmode \
-  -nographics \
-  -logFile /dev/stdout \
-  -batchmode \
-  -nographics \
-  -verbose \
-  -quit \
-  -projectPath $GITHUB_WORKSPACE \
-  -runTests \
-  -testPlatform $TEST_PLATFORM \
-  -testResults $GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml
+xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+  /opt/Unity/Editor/Unity \
+    -batchmode \
+    -nographics \
+    -logFile /dev/stdout \
+    -quit \
+    -username "$UNITY_EMAIL" \
+    -password "$UNITY_PASSWORD" \
+    -projectPath "$GITHUB_WORKSPACE" \
+    -testPlatform $TEST_PLATFORM \
+    -testResults "$GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml" \
+    -runTests
 
 UNITY_EXIT_CODE=$?
 
@@ -33,5 +33,7 @@ else
   echo "Unexpected exit code $UNITY_EXIT_CODE";
 fi
 
-cat $(pwd)/$TEST_PLATFORM-results.xml | grep test-run | grep Passed
+echo "Results: "
+cat $GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml
+cat $GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml | grep test-run | grep Passed
 exit $UNITY_TEST_EXIT_CODE
