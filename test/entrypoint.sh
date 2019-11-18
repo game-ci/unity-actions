@@ -16,40 +16,28 @@ echo "Activating container"
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
   /opt/Unity/Editor/Unity \
     -batchmode \
-    -manualLicenseFile Unity_v2019.2.11f1.ulf \
     -nographics \
     -logFile /dev/stdout \
-    -quit || true
+    -manualLicenseFile Unity_v2019.2.11f1.ulf \
+    -quit
 
-echo "Activation attempt 2"
-
+echo "Testing project for $TEST_PLATFORM"
+echo "Using path: $GITHUB_WORKSPACE"
+ls -alh $GITHUB_WORKSPACE
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
   /opt/Unity/Editor/Unity \
     -batchmode \
-    -manualLicenseFile Unity_v2019.2.11f1.ulf \
     -nographics \
     -logFile /dev/stdout \
-    -quit \
-    -username "$UNITY_EMAIL" \
-    -password "$UNITY_PASSWORD" || true
+    -runEditorTests "$GITHUB_WORKSPACE" \
+    -editorTestsResultFile "$GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml"
+#    -projectPath "$GITHUB_WORKSPACE" \
+#    -testPlatform $TEST_PLATFORM \
+#    -testResults "$GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml" \
+#    -runTests
 
-echo "Testing for $TEST_PLATFORM"
-
-xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
-  /opt/Unity/Editor/Unity \
-    -batchmode \
-    -manualLicenseFile Unity_v2019.2.11f1.ulf \
-    -nographics \
-    -logFile /dev/stdout \
-    -quit \
-    -projectPath "$GITHUB_WORKSPACE" \
-    -testPlatform $TEST_PLATFORM \
-    -testResults "$GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml" \
-    -runTests
-
-# For if needed
-#    -username "$UNITY_EMAIL" \
-#    -password "$UNITY_PASSWORD" \
+# TODO - remove exit 0 here
+exit 0
 
 UNITY_EXIT_CODE=$?
 
@@ -66,4 +54,4 @@ fi
 echo "Results: "
 cat $GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml
 cat $GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml | grep test-run | grep Passed
-exit $UNITY_TEST_EXIT_CODE
+exit $UNITY_EXIT_CODE
