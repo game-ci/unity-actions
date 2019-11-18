@@ -3,27 +3,42 @@
 set -e
 
 echo "$UNITY_LICENSE" > /root/.local/share/unity3d/Unity/Unity_lic.ulf
-echo "$UNITY_LICENSE" > /root/.local/share/unity3d/Unity/Unity_v2019.x.ulf
-echo "$UNITY_LICENSE" > Unity_v2019.x.ulf
+echo "$UNITY_LICENSE" > /root/.local/share/unity3d/Unity/Unity_v2019.2.11f1.ulf
+echo "$UNITY_LICENSE" > Unity_v2019.2.11f1.ulf
 
 cat /root/.local/share/unity3d/Unity/Unity_lic.ulf
 
 set -x
 
-echo "Testing for $TEST_PLATFORM"
+# Activate container
+# See: https://docs.unity3d.com/Manual/CommandLineArguments.html
+echo "Activating container"
+xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+  /opt/Unity/Editor/Unity \
+    -batchmode \
+    -manualLicenseFile Unity_v2019.2.11f1.ulf \
+    -nographics \
+    -logFile /dev/stdout \
+    -quit || true
+
+echo "Activation attempt 2"
 
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
   /opt/Unity/Editor/Unity \
     -batchmode \
+    -manualLicenseFile Unity_v2019.2.11f1.ulf \
     -nographics \
     -logFile /dev/stdout \
     -quit \
     -username "$UNITY_EMAIL" \
     -password "$UNITY_PASSWORD" || true
 
+echo "Testing for $TEST_PLATFORM"
+
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
   /opt/Unity/Editor/Unity \
     -batchmode \
+    -manualLicenseFile Unity_v2019.2.11f1.ulf \
     -nographics \
     -logFile /dev/stdout \
     -quit \
