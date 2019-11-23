@@ -1,0 +1,53 @@
+on: [push]
+
+jobs:
+  requestManualActivationFile:
+    runs-on: ubuntu-latest
+    name: Request manual activation file
+
+    # Set Unity version
+    strategy:
+      matrix:
+        # TODO - Reference this tag in all steps
+        unity-tag: [2019.2.11f1]
+
+    steps:
+
+      # Checkout repository (required to test local actions)
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      # Use action from this repo
+      - uses: ./get-manual-license-file
+
+      # Configure how that action should run
+      - name: Request manual activation file
+        id: getManualLicenseFile
+        uses: actions/webbertakken/get-manual-license-file@master
+
+      ##
+      ## Strategy 1: Use the output from the jobs output variable
+      ##
+
+      # Save output from variable as ManualActivationFile.alf
+      - name: Save variable as file
+        run: echo ${{ steps.getManualLicenseFile.outputs.activationFile }} > ManualActivationFile.alf
+
+      # Upload artifact
+      - name: Expose as artifact (Strategy 1)
+        uses: actions/upload-artifact@v1
+        with:
+          name: ManualActivationFile.alf
+          path: ManualActivationFile.alf
+
+
+      ##
+      ## Strategy 1: Use the output file directly
+      ##
+
+      # Upload artifact
+      - name: Expose as artifact (Strategy 2 - variable)
+        uses: actions/upload-artifact@v1
+        with:
+          name: Unity_v${{ matrix.unity-tag }}.alf
+          path: Unity_v${{ matrix.unity-tag }}.alf
