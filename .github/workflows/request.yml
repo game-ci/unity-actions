@@ -23,8 +23,8 @@ jobs:
       # Use action from this repo
       - name: Request manual activation file
         id: getManualLicenseFile
-        uses: ./get-manual-license-file
-#       uses: actions/webbertakken/get-manual-license-file@master
+        uses: ./request-manual-activation-file
+#       uses: actions/webbertakken/request-manual-activation-file@master
 
       ##
       ## Strategy 1: Use the output from the jobs output variable
