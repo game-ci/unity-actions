@@ -8,8 +8,7 @@ jobs:
     # Set Unity version
     strategy:
       matrix:
-        # TODO - Reference this tag in all steps
-        unity-tag: [2019.2.11f1]
+        unity-tag: [2019.2.11f1] # TODO - Reference this tag in all steps
 
     steps:
 
@@ -17,10 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v1
 
-
-
-
-      # Use action from this repo
+      # Configure request manual activation file action
       - name: Request manual activation file
         id: getManualLicenseFile
         uses: ./request-manual-activation-file
@@ -29,6 +25,8 @@ jobs:
       ##
       ## Strategy 1: Use the output from the jobs output variable
       ##
+
+      # TODO - Fix quotes in this file
 
       # Save output from variable as ManualActivationFile.alf
       - name: Save variable as file
@@ -41,9 +39,8 @@ jobs:
           name: ManualActivationFile.alf
           path: ManualActivationFile.alf
 
-
       ##
-      ## Strategy 1: Use the output file directly
+      ## Strategy 2: Use the output file directly
       ##
 
       # Upload artifact
