@@ -17,13 +17,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v1
 
-      # Use action from this repo
-      - uses: ./get-manual-license-file
 
-      # Configure how that action should run
+
+
+      # Use action from this repo
       - name: Request manual activation file
         id: getManualLicenseFile
-        uses: actions/webbertakken/get-manual-license-file@master
+        uses: ./get-manual-license-file
+#       uses: actions/webbertakken/get-manual-license-file@master
 
       ##
       ## Strategy 1: Use the output from the jobs output variable
