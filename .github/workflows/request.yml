@@ -30,7 +30,7 @@ jobs:
 
       # Save output from variable as ManualActivationFile.alf
       - name: Save variable as file
-        run: echo ${{ steps.getManualLicenseFile.outputs.activationFile }} > ManualActivationFile.alf
+        run: printf "%s" "${{ steps.getManualLicenseFile.outputs.activationFile }}" > ManualActivationFile.alf
 
       # Upload artifact
       - name: Expose as artifact (Strategy 1)
