@@ -1,7 +1,7 @@
 FROM gableroux/unity3d:2019.2.11f1
 
-LABEL "com.github.actions.name"="Get Unity License File"
-LABEL "com.github.actions.description"="Acquire manual license file for Unity editor"
+LABEL "com.github.actions.name"="Request Unity Manual Activation File"
+LABEL "com.github.actions.description"="Request the manual activation file for activating Unity personal"
 LABEL "com.github.actions.icon"="box"
 LABEL "com.github.actions.color"="gray-dark"
 
