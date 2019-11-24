@@ -2,12 +2,7 @@
 
 set -e
 
-UNITY_LICENSE=$1
-UNITY_SERIAL=$2
-UNITY_EMAIL=$3
-UNITY_PASSWORD=$4
-
-if [[ -n "$UNITY_LICENSE" ]] && [[ "$UNITY_LICENSE" != "none" ]]; then
+if [[ -n "$UNITY_LICENSE" ]]; then
   #
   # PERSONAL LICENSE MODE
   #

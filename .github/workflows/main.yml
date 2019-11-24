@@ -19,6 +19,6 @@ jobs:
       # Configure generic activation (local to the actions container)
       - name: Request activation
         uses: ./request-activation
-        with:
-          unityLicense: ${{ secrets.UNITY_LICENSE }}
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
