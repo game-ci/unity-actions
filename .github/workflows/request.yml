@@ -18,34 +18,12 @@ jobs:
 
       # Configure request manual activation file action
       - name: Request manual activation file
-        id: getManualLicenseFile
         uses: ./request-manual-activation-file
-#       uses: actions/webbertakken/request-manual-activation-file@master
-
-      ##
-      ## Strategy 1: Use the output from the jobs output variable
-      ##
-
-      # TODO - Fix quotes in this file
-
-      # Save output from variable as ManualActivationFile.alf
-      - name: Save variable as file
-        run: printf "%s" "${{ steps.getManualLicenseFile.outputs.activationFile }}" > ManualActivationFile.alf
+        id: getManualLicenseFile
 
       # Upload artifact
-      - name: Expose as artifact (Strategy 1 - by passed variable)
+      - name: Expose as artifact
         uses: actions/upload-artifact@v1
         with:
-          name: ManualActivationFile.alf
-          path: ManualActivationFile.alf
-
-      ##
-      ## Strategy 2: Use the output file directly
-      ##
-
-      # Upload artifact
-      - name: Expose as artifact (Strategy 2 - by copied file)
-        uses: actions/upload-artifact@v1
-        with:
-          name: Unity_v${{ matrix.unity-tag }}.alf
-          path: Unity_v${{ matrix.unity-tag }}.alf
+          name: ${{ steps.getManualLicenseFile.outputs.filePath }}
+          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
