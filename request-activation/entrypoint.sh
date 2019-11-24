@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 if [[ -n "$UNITY_LICENSE" ]]; then
   #
   # PERSONAL LICENSE MODE
@@ -21,56 +23,44 @@ if [[ -n "$UNITY_LICENSE" ]]; then
   echo "$UNITY_LICENSE" > $FILE_PATH
   echo "$UNITY_LICENSE" | tr -d '\r' > /root/.local/share/unity3d/Unity/Unity_lic.ulf
 
-  set -x
+  ##
+  ## Activate container
+  ##
 
-  # Activate container
-  # See: https://docs.unity3d.com/Manual/CommandLineArguments.html
-
-  echo "Strategy 1 - Every action activates before running"
+  # CLI arguments reference: https://docs.unity3d.com/Manual/CommandLineArguments.html
+  echo "Requesting activation"
   xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     /opt/Unity/Editor/Unity \
       -batchmode \
       -nographics \
       -logFile /dev/stdout \
       -quit \
-      -manualLicenseFile $FILE_PATH \
-      -createProject licenseTestProject
+      -manualLicenseFile $FILE_PATH
+  # This is expected to always exit with code 1 (both success and failure).
+  # Convert to exit code 0 by echoing the current exit code.
   echo $?
-  UNITY_EXIT_CODE=$?
-  echo "Exited with code $UNITY_EXIT_CODE \n\n"
-  rm -rf licenseTestProject
 
-  echo "Strategy 2 - Silent activation before any job"
-  UNITY_EXIT_CODE=$?
-  echo "Exited with code $UNITY_EXIT_CODE \n\n"
+  ##
+  ## Verify Activation
+  ##
 
-  echo "Strategy 3 - Run activation, exit 0 then another command"
+  # Exit code is now 0
+  # Run any command that requires activation to verify
+  echo "Verifying activation"
   xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     /opt/Unity/Editor/Unity \
       -batchmode \
       -nographics \
       -logFile /dev/stdout \
       -quit \
-      -manualLicenseFile $FILE_PATH \
-      -runTests
-  echo $?
+      -createProject /tmp/licenseTestProject
+
+  # Store the exit code from the verify command
   UNITY_EXIT_CODE=$?
   echo "Exited with code $UNITY_EXIT_CODE \n\n"
-  exit 0
-  UNITY_EXIT_CODE=$?
-  echo "Exited with code $UNITY_EXIT_CODE \n\n"
-  echo "running that other command to verify license works"
-  xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
-    /opt/Unity/Editor/Unity \
-      -batchmode \
-      -nographics \
-      -logFile /dev/stdout \
-      -quit \
-      -createProject licenseTestProject
-  echo $?
-  UNITY_EXIT_CODE=$?
-  echo "Exited with code $UNITY_EXIT_CODE \n\n"
-  rm -rf licenseTestProject
+
+  # Cleanup
+  rm -rf /tmp/licenseTestProject
 
   # Display information about the result
   UNITY_EXIT_CODE=$?
@@ -80,6 +70,9 @@ if [[ -n "$UNITY_LICENSE" ]]; then
     echo "Unclassified error occured, trying to activate license"
     echo "Exit code was: $UNITY_EXIT_CODE"
   fi
+
+  # Exit with the code from the Verify Activation command
+  exit $UNITY_EXIT_CODE
 
 else
   #
