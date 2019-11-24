@@ -25,14 +25,39 @@ if [[ -n "$UNITY_LICENSE" ]]; then
 
   # Activate container
   # See: https://docs.unity3d.com/Manual/CommandLineArguments.html
-  echo "Activating Unity"
+
+  echo "Strategy 1 - Run without activation or test command"
   xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     /opt/Unity/Editor/Unity \
       -batchmode \
       -nographics \
       -logFile /dev/stdout \
       -quit \
-      -manualLicenseFile $FILE_PATH
+  UNITY_EXIT_CODE=$?
+  echo "Exited with code $UNITY_EXIT_CODE \n\n"
+
+  echo "Strategy 2 - Run activation + test command"
+  xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+    /opt/Unity/Editor/Unity \
+      -batchmode \
+      -nographics \
+      -logFile /dev/stdout \
+      -quit \
+      -manualLicenseFile $FILE_PATH \
+      -runTests
+  UNITY_EXIT_CODE=$?
+  echo "Exited with code $UNITY_EXIT_CODE \n\n"
+
+  echo "Strategy 3 - No activation, rely on license file"
+  xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+    /opt/Unity/Editor/Unity \
+      -batchmode \
+      -nographics \
+      -logFile /dev/stdout \
+      -quit \
+      -runTests
+  UNITY_EXIT_CODE=$?
+  echo "Exited with code $UNITY_EXIT_CODE \n\n"
 
   # Display information about the result
   UNITY_EXIT_CODE=$?
