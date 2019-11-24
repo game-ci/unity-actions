@@ -2,7 +2,12 @@
 
 set -e
 
-if [[ ! -z "$UNITY_LICENSE" ]]; then
+UNITY_LICENSE=$1
+UNITY_SERIAL=$2
+UNITY_EMAIL=$3
+UNITY_PASSWORD=$4
+
+if [[ -n "$UNITY_LICENSE" ]] && [[ "$UNITY_LICENSE" != "none" ]]; then
   #
   # PERSONAL LICENSE MODE
   #
@@ -46,13 +51,12 @@ else
   #
   xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     /opt/Unity/Editor/Unity \
-      -logFile /dev/stdout \
       -batchmode \
-      -username "$UNITY_EMAIL" \
-      -password "$UNITY_PASSWORD" \
-      -serial "$UNITY_SERIAL" \
       -nographics \
-      -verbose \
+      -logFile /dev/stdout \
       -quit \
-      -projectPath "$(pwd)"
+      -serial "$UNITY_SERIAL" \
+      -username "$UNITY_EMAIL" \
+      -password "$UNITY_PASSWORD"
+
 fi
