@@ -15,7 +15,25 @@ if [[ ! -z "$UNITY_LICENSE" ]]; then
   #   * Windows:   C:/ProgramData/Unity/Unity_lic.ulf
   #   * MacOS:     /Library/Application Support/Unity/Unity_lic.ulf
   #
-  echo "$UNITY_LICENSE" > /root/.local/share/unity3d/Unity/Unity_lic.ulf
+
+  # Set the license file path
+  FILE_PATH=UnityLicenseFile.ulf
+
+  # Copy license file from Github variables
+  echo "$UNITY_LICENSE" > $FILE_PATH
+  # echo "$UNITY_LICENSE" > /root/.local/share/unity3d/Unity/Unity_lic.ulf
+
+  # Activate container
+  # See: https://docs.unity3d.com/Manual/CommandLineArguments.html
+  echo "Activating Unity"
+  xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+    /opt/Unity/Editor/Unity \
+      -batchmode \
+      -nographics \
+      -logFile /dev/stdout \
+      -quit \
+      -manualLicenseFile Unity_v2019.2.11f1.ulf
+
 else
   #
   # PROFESSIONAL (SERIAL) LICENSE MODE
@@ -23,6 +41,8 @@ else
   # This will activate unity, using the activating process.
   #
   # Note: This is the preferred way for PROFESSIONAL LICENSES.
+  #
+  # TODO - Verify this using some pro license
   #
   xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     /opt/Unity/Editor/Unity \
