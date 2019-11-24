@@ -1,0 +1,8 @@
+name: 'Request activation'
+description: 'Request activation using credentials or license file'
+inputs:
+  unityLicense:
+    description: 'Unity License for activating Unity Personal'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

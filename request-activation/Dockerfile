@@ -1,4 +1,4 @@
-FROM gableroux/unity3d:2019.2.11f1-webgl
+FROM gableroux/unity3d:2019.2.11f1
 
 LABEL "com.github.actions.name"="Activate Unity"
 LABEL "com.github.actions.description"="Activate license for Unity editor"
