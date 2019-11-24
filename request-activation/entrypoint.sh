@@ -32,7 +32,7 @@ if [[ -n "$UNITY_LICENSE" ]]; then
       -nographics \
       -logFile /dev/stdout \
       -quit \
-      -manualLicenseFile Unity_v2019.2.11f1.ulf
+      -manualLicenseFile $FILE_PATH
 
 else
   #
