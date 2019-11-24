@@ -26,24 +26,21 @@ if [[ -n "$UNITY_LICENSE" ]]; then
   # Activate container
   # See: https://docs.unity3d.com/Manual/CommandLineArguments.html
 
-  echo "Strategy 1 - No activation, fast command"
+  echo "Strategy 1 - Every action activates before running"
   xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     /opt/Unity/Editor/Unity \
       -batchmode \
       -nographics \
       -logFile /dev/stdout \
       -quit \
+      -manualLicenseFile $FILE_PATH \
       -createProject licenseTestProject
+  echo $?
   UNITY_EXIT_CODE=$?
+  echo "Exited with code $UNITY_EXIT_CODE \n\n"
+  rm -rf licenseTestProject
 
-  echo "Strategy 2 - No activation, rely on license file"
-  xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
-    /opt/Unity/Editor/Unity \
-      -batchmode \
-      -nographics \
-      -logFile /dev/stdout \
-      -quit \
-      -runTests
+  echo "Strategy 2 - Silent activation before any job"
   UNITY_EXIT_CODE=$?
   echo "Exited with code $UNITY_EXIT_CODE \n\n"
 
@@ -56,6 +53,10 @@ if [[ -n "$UNITY_LICENSE" ]]; then
       -quit \
       -manualLicenseFile $FILE_PATH \
       -runTests
+  echo $?
+  UNITY_EXIT_CODE=$?
+  echo "Exited with code $UNITY_EXIT_CODE \n\n"
+  exit 0
   UNITY_EXIT_CODE=$?
   echo "Exited with code $UNITY_EXIT_CODE \n\n"
   echo "running that other command to verify license works"
@@ -66,7 +67,9 @@ if [[ -n "$UNITY_LICENSE" ]]; then
       -logFile /dev/stdout \
       -quit \
       -createProject licenseTestProject
-
+  echo $?
+  UNITY_EXIT_CODE=$?
+  echo "Exited with code $UNITY_EXIT_CODE \n\n"
   rm -rf licenseTestProject
 
   # Display information about the result
