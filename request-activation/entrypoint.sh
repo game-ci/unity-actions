@@ -20,7 +20,7 @@ if [[ -n "$UNITY_LICENSE" ]]; then
   FILE_PATH=UnityLicenseFile.ulf
 
   # Copy license file from Github variables
-  echo "$UNITY_LICENSE" > $FILE_PATH
+  echo "$UNITY_LICENSE" | tr -d '\r' > $FILE_PATH
   echo "$UNITY_LICENSE" | tr -d '\r' > /root/.local/share/unity3d/Unity/Unity_lic.ulf
 
   ##
@@ -46,7 +46,21 @@ if [[ -n "$UNITY_LICENSE" ]]; then
 
   # Exit code is now 0
   # Run any command that requires activation to verify
-  echo "Verifying activation"
+
+  # Verification strategy 1
+  echo "Verifying activation (strategy 1)"
+  xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+    /opt/Unity/Editor/Unity \
+      -batchmode \
+      -nographics \
+      -logFile /dev/stdout \
+      -quit
+  UNITY_EXIT_CODE=$?
+  echo $UNITY_EXIT_CODE
+  echo "Exited with code $UNITY_EXIT_CODE \n\n"
+
+  # Verification strategy 2
+  echo "Verifying activation (strategy 2)"
   xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     /opt/Unity/Editor/Unity \
       -batchmode \
