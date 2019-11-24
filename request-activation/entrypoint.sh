@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
-
 if [[ -n "$UNITY_LICENSE" ]]; then
   #
   # PERSONAL LICENSE MODE
@@ -15,6 +13,7 @@ if [[ -n "$UNITY_LICENSE" ]]; then
   #   * Windows:   C:/ProgramData/Unity/Unity_lic.ulf
   #   * MacOS:     /Library/Application Support/Unity/Unity_lic.ulf
   #
+  # CLI arguments reference: https://docs.unity3d.com/Manual/CommandLineArguments.html
 
   # Set the license file path
   FILE_PATH=UnityLicenseFile.ulf
@@ -24,10 +23,8 @@ if [[ -n "$UNITY_LICENSE" ]]; then
   echo "$UNITY_LICENSE" | tr -d '\r' > /root/.local/share/unity3d/Unity/Unity_lic.ulf
 
   ##
-  ## Activate container
+  ## Activate license
   ##
-
-  # CLI arguments reference: https://docs.unity3d.com/Manual/CommandLineArguments.html
   echo "Requesting activation"
   xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     /opt/Unity/Editor/Unity \
@@ -39,53 +36,32 @@ if [[ -n "$UNITY_LICENSE" ]]; then
   # This is expected to always exit with code 1 (both success and failure).
   # Convert to exit code 0 by echoing the current exit code.
   echo $?
-
-  ##
-  ## Verify Activation
-  ##
-
   # Exit code is now 0
-  # Run any command that requires activation to verify
 
-  # Verification strategy 1
-  echo "Verifying activation (strategy 1)"
+  ##
+  ## Verify activated license
+  ##
+  echo "Verifying activation"
+  # Run any command that requires activation to verify
   xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     /opt/Unity/Editor/Unity \
       -batchmode \
       -nographics \
       -logFile /dev/stdout \
       -quit
-  UNITY_EXIT_CODE=$?
-  echo $UNITY_EXIT_CODE
-  echo "Exited with code $UNITY_EXIT_CODE \n\n"
-
-  # Verification strategy 2
-  echo "Verifying activation (strategy 2)"
-  xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
-    /opt/Unity/Editor/Unity \
-      -batchmode \
-      -nographics \
-      -logFile /dev/stdout \
-      -quit \
-      -createProject /tmp/licenseTestProject
 
   # Store the exit code from the verify command
   UNITY_EXIT_CODE=$?
-  echo "Exited with code $UNITY_EXIT_CODE \n\n"
-
-  # Cleanup
-  rm -rf /tmp/licenseTestProject
 
   # Display information about the result
-  UNITY_EXIT_CODE=$?
   if [ $UNITY_EXIT_CODE -eq 0 ]; then
     echo "Activation complete"
   else
-    echo "Unclassified error occured, trying to activate license"
+    echo "Unclassified error occured while trying to activate license"
     echo "Exit code was: $UNITY_EXIT_CODE"
   fi
 
-  # Exit with the code from the Verify Activation command
+  # Exit with the code from the license verification step
   exit $UNITY_EXIT_CODE
 
 else
