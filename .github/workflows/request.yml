@@ -33,7 +33,7 @@ jobs:
         run: printf "%s" "${{ steps.getManualLicenseFile.outputs.activationFile }}" > ManualActivationFile.alf
 
       # Upload artifact
-      - name: Expose as artifact (Strategy 1)
+      - name: Expose as artifact (Strategy 1 - by passed variable)
         uses: actions/upload-artifact@v1
         with:
           name: ManualActivationFile.alf
@@ -44,7 +44,7 @@ jobs:
       ##
 
       # Upload artifact
-      - name: Expose as artifact (Strategy 2 - variable)
+      - name: Expose as artifact (Strategy 2 - by copied file)
         uses: actions/upload-artifact@v1
         with:
           name: Unity_v${{ matrix.unity-tag }}.alf
