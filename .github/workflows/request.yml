@@ -1,3 +1,4 @@
+name: Request manual activation file
 on: [push]
 
 jobs:
