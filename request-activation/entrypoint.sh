@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 if [[ -n "$UNITY_LICENSE" ]]; then
   #
   # PERSONAL LICENSE MODE
