@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 if [[ -n "$UNITY_LICENSE" ]]; then
   #
   # PERSONAL LICENSE MODE
@@ -19,7 +21,9 @@ if [[ -n "$UNITY_LICENSE" ]]; then
 
   # Copy license file from Github variables
   echo "$UNITY_LICENSE" > $FILE_PATH
-  # echo "$UNITY_LICENSE" > /root/.local/share/unity3d/Unity/Unity_lic.ulf
+  echo "$UNITY_LICENSE" | tr -d '\r' > /root/.local/share/unity3d/Unity/Unity_lic.ulf
+
+  set -x
 
   # Activate container
   # See: https://docs.unity3d.com/Manual/CommandLineArguments.html
