@@ -32,6 +32,15 @@ if [[ -n "$UNITY_LICENSE" ]]; then
       -quit \
       -manualLicenseFile $FILE_PATH
 
+  # Display information about the result
+  UNITY_EXIT_CODE=$?
+  if [ $UNITY_EXIT_CODE -eq 0 ]; then
+    echo "Activation complete"
+  else
+    echo "Unclassified error occured, trying to activate license"
+    echo "Exit code was: $UNITY_EXIT_CODE"
+  fi
+
 else
   #
   # PROFESSIONAL (SERIAL) LICENSE MODE
