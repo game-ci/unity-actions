@@ -1,5 +1,10 @@
 # Unity Actions
 
+[//]: # (TODO - Update to use the names of the workflows instead)
+
+[![Actions status](https://github.com/WebberTakken/unity-actions/workflows/.github/workflows/main.yml/badge.svg)](https://github.com/WebberTakken/unity-actions/workflows/.github/workflows/main.yml/badge.svg)
+[![Actions status](https://github.com/WebberTakken/unity-actions/workflows/.github/workflows/request.yml/badge.svg)](https://github.com/WebberTakken/unity-actions/workflows/.github/workflows/request.yml/badge.svg)
+
 Github actions for testing and building Unity projects (WIP)
 
 Feel free to contribute.
@@ -8,7 +13,7 @@ Feel free to contribute.
 
 - [X] Checkout project
 - [X] Activate license
-- [ ] Open project in Unity
+- [X] Open project in Unity
 - [ ] Install dependencies
 - [ ] Perform test suite
 - [ ] Select scene(s)
