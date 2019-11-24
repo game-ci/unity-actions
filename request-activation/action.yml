@@ -1,27 +1,5 @@
 name: 'Request activation'
 description: 'Request activation using credentials or license file'
-inputs:
-  unityLicense:
-    description: 'Unity License for activating Unity Personal'
-    required: false
-    default: 'none'
-  unitySerial:
-    description: 'Unity serial for activation Unity Professional'
-    required: false
-    default: 'none'
-  unityEmail:
-    description: 'Unity account email for activation Unity Professional'
-    required: false
-    default: 'none'
-  unityPassword:
-    description: 'Unity account password for activation Unity Professional'
-    required: false
-    default: 'none'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.unityLicense }}
-    - ${{ inputs.unitySerail }}
-    - ${{ inputs.unityEmail }}
-    - ${{ inputs.unityPassword }}
