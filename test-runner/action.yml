@@ -1,0 +1,5 @@
+name: 'Test runner'
+description: 'Run Unity tests for a project'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
