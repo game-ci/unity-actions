@@ -1,7 +1,7 @@
-FROM gableroux/unity3d:2019.2.11f1-webgl
+FROM gableroux/unity3d:2019.2.11f1
 
-LABEL "com.github.actions.name"="Unity project test"
-LABEL "com.github.actions.description"="Test unity project"
+LABEL "com.github.actions.name"="Test runner"
+LABEL "com.github.actions.description"="Test a Unity project"
 LABEL "com.github.actions.icon"="box"
 LABEL "com.github.actions.color"="gray-dark"
 

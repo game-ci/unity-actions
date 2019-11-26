@@ -23,3 +23,17 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
+      # Configure test runner
+      - name: Run tests
+        uses: ./test-runner
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_PROJECT: sample-project
+          TEST_PLATFORM: playmode # [ playmode | editmode ]
+
+      # Upload artifact
+      - name: Expose as artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: test results
+          path: sample-project/playmode-results.xml
