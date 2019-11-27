@@ -1,10 +1,10 @@
-name: Happy flow
+name: 😎 Actions
 on: [push]
 
 jobs:
   requestManualActivationFile:
+    name: Request manual activation file 🔑
     runs-on: ubuntu-latest
-    name: Request manual activation file
     steps:
       # Checkout repository (required to test local actions)
       - name: Checkout repository
@@ -23,8 +23,8 @@ jobs:
           path: ${{ steps.getManualLicenseFile.outputs.filePath }}
 
   requestActivation:
+    name: Request activation ✔
     runs-on: ubuntu-latest
-    name: Test the workflow actions
     steps:
       # Checkout repository (required to test local actions)
       - name: Checkout repository
@@ -37,8 +37,8 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
   testRunnerInEditMode:
+    name: Test in editmode 📝
     runs-on: ubuntu-latest
-    name: Test the workflow actions
     steps:
       # Checkout repository (required to test local actions)
       - name: Checkout repository
@@ -59,11 +59,9 @@ jobs:
           name: Test results (edit mode)
           path: artifacts/unity-project-with-correct-tests/editmode-results.xml
 
-      # TODO - Verify that playmode-results does not exist
-
   testRunnerInPlayMode:
+    name: Test in playmode 📺
     runs-on: ubuntu-latest
-    name: Test the workflow actions
     steps:
       # Checkout repository (required to test local actions)
       - name: Checkout repository
@@ -84,11 +82,9 @@ jobs:
           name: Test results (play mode)
           path: artifacts/unity-project-with-correct-tests/playmode-results.xml
 
-      # TODO - Verify that editmode-results does not exist
-
   testRunnerInAllModes:
+    name: Test all modes ✨
     runs-on: ubuntu-latest
-    name: Test the workflow actions
     steps:
       # Checkout repository (required to test local actions)
       - name: Checkout repository
