@@ -19,8 +19,6 @@ namespace Tests
 
       // Then
       Assert.AreEqual(1, counter.Count);
-
-      Assert.True(false);
     }
 
     [Test]

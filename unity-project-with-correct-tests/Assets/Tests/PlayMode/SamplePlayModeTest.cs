@@ -14,8 +14,6 @@ namespace Tests
     {
       // Use the Assert class to test conditions
       Assert.True(true);
-
-      Assert.True(false);
     }
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
