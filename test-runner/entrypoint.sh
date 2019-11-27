@@ -57,7 +57,7 @@ xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     -batchmode \
     -logfile /dev/stdout \
     -runTests "$UNITY_PROJECT_PATH" \
-    -testPlatfrom playmode \
+    -testPlatform playmode \
     -testResults "$UNITY_PROJECT_PATH/test-results.xml"
 
 UNITY_EXIT_CODE=$?
