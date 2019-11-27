@@ -1,18 +1,31 @@
-name: Workflow Actions
+name: Happy flow
 on: [push]
 
 jobs:
-  testWorkflowActions:
+  requestManualActivationFile:
+    runs-on: ubuntu-latest
+    name: Request manual activation file
+    steps:
+      # Checkout repository (required to test local actions)
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      # Configure request manual activation file action
+      - name: Request manual activation file
+        uses: ./request-manual-activation-file
+        id: getManualLicenseFile
+
+      # Upload artifact
+      - name: Expose as artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ steps.getManualLicenseFile.outputs.filePath }}
+          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
+
+  requestActivation:
     runs-on: ubuntu-latest
     name: Test the workflow actions
-
-    # Set Unity version
-    strategy:
-      matrix:
-        unity-tag: [2019.2.11f1] # TODO - Reference this tag in all steps
-
     steps:
-
       # Checkout repository (required to test local actions)
       - name: Checkout repository
         uses: actions/checkout@v1
@@ -23,31 +36,75 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
+  testRunnerInEditMode:
+    runs-on: ubuntu-latest
+    name: Test the workflow actions
+    steps:
+      # Checkout repository (required to test local actions)
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
       # Configure test runner
       - name: Run tests
         uses: ./test-runner
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_PROJECT: sample-project
-          TEST_PLATFORM: playmode # [ playmode | editmode ]
+          UNITY_PROJECT: unity-project-with-correct-tests
+          TEST_MODE: editmode
 
       # Upload artifact
       - name: Expose as artifact
         uses: actions/upload-artifact@v1
         with:
-          name: 2019.2 test results
-          path: sample-project/old-results.xml
+          name: Test results (edit mode)
+          path: artifacts/unity-project-with-correct-tests/editmode-results.xml
+
+      # TODO - Verify that playmode-results does not exist
+
+  testRunnerInPlayMode:
+    runs-on: ubuntu-latest
+    name: Test the workflow actions
+    steps:
+      # Checkout repository (required to test local actions)
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      # Configure test runner
+      - name: Run tests
+        uses: ./test-runner
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_PROJECT: unity-project-with-correct-tests
+          TEST_MODE: playmode
 
       # Upload artifact
       - name: Expose as artifact
         uses: actions/upload-artifact@v1
         with:
-          name: 2019.3 edit mode results
-          path: sample-project/editmode-results.xml
+          name: Test results (play mode)
+          path: artifacts/unity-project-with-correct-tests/playmode-results.xml
 
-      # Upload artifact
+      # TODO - Verify that editmode-results does not exist
+
+  testRunnerInAllModes:
+    runs-on: ubuntu-latest
+    name: Test the workflow actions
+    steps:
+      # Checkout repository (required to test local actions)
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      # Configure test runner
+      - name: Run tests
+        uses: ./test-runner
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_PROJECT: unity-project-with-correct-tests
+          TEST_MODE: all
+
+      # Upload artifacts
       - name: Expose as artifact
         uses: actions/upload-artifact@v1
         with:
-          name: 2019.3 play mode results
-          path: sample-project/playmode-results.xml
+          name: Test results (all modes)
+          path: artifacts/unity-project-with-correct-tests/
