@@ -35,7 +35,7 @@ xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     -batchmode \
     -logfile /dev/stdout \
     -runEditorTests "$UNITY_PROJECT_PATH" \
-    -editorTestsResultFile "$UNITY_PROJECT_PATH/$TEST_PLATFORM-results.xml"
+    -editorTestsResultFile "$UNITY_PROJECT_PATH/old-results.xml"
 
 UNITY_EXIT_CODE=$?
 
@@ -49,16 +49,48 @@ else
   echo "Unexpected exit code $UNITY_EXIT_CODE";
 fi
 
-ls -alh $UNITY_PROJECT_PATH
-echo "Testing the 2019.3 way"
+# Test 2019.3 mode
 # Reference: https://docs.unity3d.com/2019.3/Documentation/Manual/CommandLineArguments.html
+
+#
+# EditMode
+#
+
+ls -alh $UNITY_PROJECT_PATH
+echo "Testing the 2019.3 way (editmode)"
+xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+  /opt/Unity/Editor/Unity \
+    -batchmode \
+    -logfile /dev/stdout \
+    -runTests "$UNITY_PROJECT_PATH" \
+    -testPlatform editmode \
+    -testResults "$UNITY_PROJECT_PATH/editmode-results.xml"
+
+UNITY_EXIT_CODE=$?
+
+if [ $UNITY_EXIT_CODE -eq 0 ]; then
+  echo "Run succeeded, no failures occurred";
+elif [ $UNITY_EXIT_CODE -eq 2 ]; then
+  echo "Run succeeded, some tests failed";
+elif [ $UNITY_EXIT_CODE -eq 3 ]; then
+  echo "Run failure (other failure)";
+else
+  echo "Unexpected exit code $UNITY_EXIT_CODE";
+fi
+
+#
+# PlayMode
+#
+
+ls -alh $UNITY_PROJECT_PATH
+echo "Testing the 2019.3 way (playmode)"
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
   /opt/Unity/Editor/Unity \
     -batchmode \
     -logfile /dev/stdout \
     -runTests "$UNITY_PROJECT_PATH" \
     -testPlatform playmode \
-    -testResults "$UNITY_PROJECT_PATH/test-results.xml"
+    -testResults "$UNITY_PROJECT_PATH/playmode-results.xml"
 
 UNITY_EXIT_CODE=$?
 
@@ -72,9 +104,24 @@ else
   echo "Unexpected exit code $UNITY_EXIT_CODE";
 fi
 
-echo "Results: "
+#
+# Results
+#
+
+ls -alh $UNITY_PROJECT_PATH
+
+echo "Results:"
 cat "$UNITY_PROJECT_PATH/$TEST_PLATFORM-results.xml"
 cat "$UNITY_PROJECT_PATH/$TEST_PLATFORM-results.xml" | grep test-run | grep Passed
-cat "$UNITY_PROJECT_PATH/test-results.xml"
-cat "$UNITY_PROJECT_PATH/test-results.xml" | grep test-run | grep Passed
+echo "\n\nEditMode Results\n\n"
+cat "$UNITY_PROJECT_PATH/editmode-results.xml"
+cat "$UNITY_PROJECT_PATH/editmode-results.xml" | grep test-run | grep Passed
+echo "\n\nPlayMode Results\n\n"
+cat "$UNITY_PROJECT_PATH/playmode-results.xml"
+cat "$UNITY_PROJECT_PATH/playmode-results.xml" | grep test-run | grep Passed
+
+#
+# Exit
+#
+
 exit $UNITY_EXIT_CODE

@@ -36,11 +36,18 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: 2019.2 test results
-          path: sample-project/playmode-results.xml
+          path: sample-project/old-results.xml
 
       # Upload artifact
       - name: Expose as artifact
         uses: actions/upload-artifact@v1
         with:
-          name: 2019.3 test results
-          path: sample-project/test-results.xml
+          name: 2019.3 edit mode results
+          path: sample-project/editmode-results.xml
+
+      # Upload artifact
+      - name: Expose as artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: 2019.3 play mode results
+          path: sample-project/playmode-results.xml
