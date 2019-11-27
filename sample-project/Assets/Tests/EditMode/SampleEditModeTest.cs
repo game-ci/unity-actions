@@ -19,6 +19,8 @@ namespace Tests
 
       // Then
       Assert.AreEqual(1, counter.Count);
+
+      Assert.True(false);
     }
 
     [Test]
@@ -26,13 +28,13 @@ namespace Tests
     {
       // Given
       var counter = new BasicCounter(BasicCounter.MaxCount);
-      
+
       // When
       counter.Increment();
-      
+
       // Then
       Assert.AreEqual(BasicCounter.MaxCount, counter.Count);
     }
-    
+
   }
 }

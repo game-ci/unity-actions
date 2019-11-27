@@ -26,20 +26,39 @@
   echo $?
   # Exit code is now 0
 
-echo "Testing project for $TEST_PLATFORM"
+echo "Testing the 2019.2 way"
+# Reference: https://docs.unity3d.com/2019.2/Documentation/Manual/CommandLineArguments.html
 echo "Using path: $UNITY_PROJECT_PATH"
 ls -alh $UNITY_PROJECT_PATH
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
   /opt/Unity/Editor/Unity \
     -batchmode \
-    -nographics \
-    -logFile /dev/stdout \
+    -logfile /dev/stdout \
     -runEditorTests "$UNITY_PROJECT_PATH" \
     -editorTestsResultFile "$UNITY_PROJECT_PATH/$TEST_PLATFORM-results.xml"
-#    -projectPath "$GITHUB_WORKSPACE" \
-#    -testPlatform $TEST_PLATFORM \
-#    -testResults "$GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml" \
-#    -runTests
+
+UNITY_EXIT_CODE=$?
+
+if [ $UNITY_EXIT_CODE -eq 0 ]; then
+  echo "Run succeeded, no failures occurred";
+elif [ $UNITY_EXIT_CODE -eq 2 ]; then
+  echo "Run succeeded, some tests failed";
+elif [ $UNITY_EXIT_CODE -eq 3 ]; then
+  echo "Run failure (other failure)";
+else
+  echo "Unexpected exit code $UNITY_EXIT_CODE";
+fi
+
+ls -alh $UNITY_PROJECT_PATH
+echo "Testing the 2019.3 way"
+# Reference: https://docs.unity3d.com/2019.3/Documentation/Manual/CommandLineArguments.html
+xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+  /opt/Unity/Editor/Unity \
+    -batchmode \
+    -logfile /dev/stdout \
+    -runTests "$UNITY_PROJECT_PATH" \
+    -testPlatfrom playmode \
+    -testResults "$UNITY_PROJECT_PATH/test-results.xml"
 
 UNITY_EXIT_CODE=$?
 
@@ -54,6 +73,8 @@ else
 fi
 
 echo "Results: "
-cat $GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml
-cat $GITHUB_WORKSPACE/$TEST_PLATFORM-results.xml | grep test-run | grep Passed
+cat "$UNITY_PROJECT_PATH/$TEST_PLATFORM-results.xml"
+cat "$UNITY_PROJECT_PATH/$TEST_PLATFORM-results.xml" | grep test-run | grep Passed
+cat "$UNITY_PROJECT_PATH/test-results.xml"
+cat "$UNITY_PROJECT_PATH/test-results.xml" | grep test-run | grep Passed
 exit $UNITY_EXIT_CODE
