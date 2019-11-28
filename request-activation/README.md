@@ -8,15 +8,16 @@ Activates personal of professional license of unity.
 
 1. Goto `Repository` > `Settings` > `Secrets`
 2. Create a new secret called `UNITY_LICENSE`
-3. Find the license file:
-    - Windows: `C:/ProgramData/Unity/Unity_lic.ulf`
-    - MacOS: `/Library/Application Support/Unity/Unity_lic.ulf`
-4. Copy the contents into the value field of the secret `UNITY_LICENSE`
+3. Request manual activation file using the 
+[request action](../request-manual-activation-file/README.md)
+and use it to acquire your license from 
+[unity licensing](https://license.unity3d.com/manual).
+4. Copy the contents of the license file into the value field of the secret `UNITY_LICENSE`
 5. Use the action as follows:
 
 ```yaml
 - name: Activate Unity
-  uses: webbertakken/unity-actions/activate@master
+  uses: webbertakken/unity-actions/request-activation@master
   env:
     UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 ```
@@ -32,7 +33,7 @@ Activates personal of professional license of unity.
 
 ```yaml
 - name: Activate Unity
-  uses: webbertakken/unity-actions/activate@master
+  uses: webbertakken/unity-actions/request-activation@master
   env:
     UNITY_EMAIL:    ${{ secrets.UNITY_EMAIL }}
     UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}

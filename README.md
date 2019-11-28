@@ -32,7 +32,7 @@ Contributions are welcomed!
 Create a workflow in `.github/workflows/main.yml`.
 
 - Look at the examples in `main.yml` from this repo.
-- To activate license: [readme](./activate/README.md).
+- To activate license: [readme](./request-activation/README.md).
 
 ## Credits
 
