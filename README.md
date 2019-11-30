@@ -1,6 +1,6 @@
 # Unity Actions
 
-[![Actions status](https://github.com/WebberTakken/unity-actions/workflows/Actions%20😎/badge.svg)](https://github.com/WebberTakken/unity-actions/workflows/Actions%20😎/badge.svg)
+[![Actions status](https://github.com/webbertakken/unity-actions/workflows/Actions%20😎/badge.svg)](https://github.com/webbertakken/unity-actions/)
 
 Github actions for testing and building Unity projects.
 
