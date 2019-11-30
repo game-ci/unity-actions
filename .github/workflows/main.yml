@@ -46,10 +46,11 @@ jobs:
 
       # Configure test runner
       - name: Run tests
-        uses: ./test-runner
+        id: testRunner
+        uses: webbertakken/unity-test-runner@v1
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_PROJECT: unity-project-with-correct-tests
+          UNITY_PROJECT: test-project
           TEST_MODE: editmode
 
       # Upload artifact
@@ -57,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: Test results (edit mode)
-          path: artifacts/unity-project-with-correct-tests/editmode-results.xml
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
 
   testRunnerInPlayMode:
     name: Test in playmode 📺
@@ -69,10 +70,11 @@ jobs:
 
       # Configure test runner
       - name: Run tests
-        uses: ./test-runner
+        id: testRunner
+        uses: webbertakken/unity-test-runner@v1
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_PROJECT: unity-project-with-correct-tests
+          UNITY_PROJECT: test-project
           TEST_MODE: playmode
 
       # Upload artifact
@@ -80,7 +82,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: Test results (play mode)
-          path: artifacts/unity-project-with-correct-tests/playmode-results.xml
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
 
   testRunnerInAllModes:
     name: Test all modes ✨
@@ -92,10 +94,11 @@ jobs:
 
       # Configure test runner
       - name: Run tests
-        uses: ./test-runner
+        id: testRunner
+        uses: webbertakken/unity-test-runner@v1
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_PROJECT: unity-project-with-correct-tests
+          UNITY_PROJECT: test-project
           TEST_MODE: all
 
       # Upload artifacts
@@ -103,4 +106,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: Test results (all modes)
-          path: artifacts/unity-project-with-correct-tests/
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
