@@ -1,6 +1,6 @@
 # Unity Actions
 
-[![Actions status](https://github.com/WebberTakken/unity-actions/workflows/%F0%9F%98%8E%20Actions/badge.svg)](https://github.com/WebberTakken/unity-actions/workflows/%F0%9F%98%8E%20Actions/badge.svg)
+[![Actions status](https://github.com/WebberTakken/unity-actions/workflows/Actions%20😎/badge.svg)](https://github.com/WebberTakken/unity-actions/workflows/Actions%20😎/badge.svg)
 
 Github actions for testing and building Unity projects.  🦄
 
@@ -42,7 +42,7 @@ Detailed instructions can be found in each action below.
 | Build for Android | ❌ | In progress |
 | Build for iOS | ❌ | In progress |
 |  |  |  |
-| Complete workflow | ✔ | [![Actions status](https://github.com/WebberTakken/unity-actions/workflows/%F0%9F%98%8E%20Actions/badge.svg)](https://github.com/WebberTakken/unity-actions/workflows/%F0%9F%98%8E%20Actions/badge.svg) |
+| Complete workflow | ✔ | [![Actions status](https://github.com/WebberTakken/unity-actions/workflows/Actions%20😎/badge.svg)](https://github.com/WebberTakken/unity-actions/workflows/Actions%20😎/badge.svg) |
 
 An example implementation can be found in `main.yml` from this repo.
 
