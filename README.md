@@ -6,33 +6,45 @@ Github actions for testing and building Unity projects.  🦄
 
 Contributions are welcomed!
 
+## Workflow steps
+
+Here's a complete mental model of how to build, test and deploy your Unity app.
+ 
+1. Checkout your repository
+2. Configure `request activation file` job.
+3. Activate your license and 
+[add](https://github.com/webbertakken/unity-request-manual-activation-file-action)
+the environment variable `UNITY_LICENSE`.
+    - Optionally verify your license using `Activate licence` job.
+4. Configure your test jobs.
+5. Create builds for your desired targets.
+6. Deploy your application.
+
+Detailed instructions can be found in each action below.
+
 ## Jobs
 
-- [X] Checkout project
-- [X] Activate license
-- [X] Open project in Unity
-- [X] Install dependencies
-- [X] Perform edit mode tests
-- [X] Perform play mode tests
-- [X] Perform all tests in one
-- [ ] Select scene(s)
-- [ ] Build scene(s)
+| Description             | Done | Status |
+|-------------------------|------|--------|
+| [Checkout project](https://github.com/actions/checkout) | ✔ | Native support |
+| | | |
+| [Request activation file](https://github.com/webbertakken/unity-request-manual-activation-file-action) | ✔ | [![Actions status](https://github.com/WebberTakken/unity-request-manual-activation-file-action/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/WebberTakken/unity-request-manual-activation-file-action/workflows/Actions%20%F0%9F%98%8E/badge.svg) |
+| Activate license | ✔ | Not yet separated |
+| | | |
+| Test all in one | ✔ | Not yet separated |
+| Test edit mode only | ✔ | Not yet separated |
+| Test play mode only | ✔ | Not yet separated |
+| | | |
+| Build for WebGL | ❌ | In progress |
+| Build for Windows | ❌ | In progress |
+| Build for Linux | ❌ | In progress |
+| Build for MacOS | ❌ | In progress |
+| Build for Android | ❌ | In progress |
+| Build for iOS | ❌ | In progress |
+|  |  |  |
+| Complete workflow | ✔ | [![Actions status](https://github.com/WebberTakken/unity-actions/workflows/%F0%9F%98%8E%20Actions/badge.svg)](https://github.com/WebberTakken/unity-actions/workflows/%F0%9F%98%8E%20Actions/badge.svg) |
 
-## Platforms
-
-- [ ] WebGL
-- [ ] Windows
-- [ ] Linux
-- [ ] MacOS
-- [ ] Android
-- [ ] iOS
-
-## How to use
-
-Create a workflow in `.github/workflows/main.yml`.
-
-- Look at the examples in `main.yml` from this repo.
-- To activate license: [readme](./request-activation/README.md).
+An example implementation can be found in `main.yml` from this repo.
 
 ## Credits
 
