@@ -1,8 +1,0 @@
-name: 'Request manual activation file'
-description: 'Request the manual activation file for activating Unity personal'
-outputs:
-  filePath:
-    description: 'Path of the manual activation file'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
