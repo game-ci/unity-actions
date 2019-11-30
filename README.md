@@ -34,16 +34,16 @@ Detailed instructions can be found in each action below.
 
 | Description             | Done | Status |
 |-------------------------|------|--------|
-| [Request activation file](https://github.com/marketplace/actions/unity-request-activation-file) | ✔ | [![Actions status](https://github.com/WebberTakken/unity-request-manual-activation-file/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/WebberTakken/unity-request-manual-activation-file/workflows/Actions%20%F0%9F%98%8E/badge.svg) |
-| [Activate license](https://github.com/marketplace/actions/unity-activate) | ✔ | [![Actions status](https://github.com/WebberTakken/unity-activate/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/WebberTakken/unity-activate/workflows/Actions%20%F0%9F%98%8E/badge.svg) |
+| [Request activation file](https://github.com/marketplace/actions/unity-request-activation-file) | ✔ | [![Actions status](https://github.com/webbertakken/unity-request-manual-activation-file/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-request-manual-activation-file) |
+| [Activate license](https://github.com/marketplace/actions/unity-activate) | ✔ | [![Actions status](https://github.com/webbertakken/unity-activate/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-activate) |
 
 #### Test
 
 | Description             | Done | Status |
 |-------------------------|------|--------|
-| Test all in one | ✔ | Not yet separated |
-| Test edit mode only | ✔ | Not yet separated |
-| Test play mode only | ✔ | Not yet separated |
+| [Test edit mode](https://github.com/marketplace/actions/unity-test-runner) | ✔ | [![Actions status](https://github.com/webbertakken/unity-test-runner/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-test-runner#edit-mode) |
+| [Test play mode](https://github.com/marketplace/actions/unity-test-runner) | ✔ | [![Actions status](https://github.com/webbertakken/unity-test-runner/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-test-runner#play-mode) |
+| [Test all in one](https://github.com/marketplace/actions/unity-test-runner) | ✔ | [![Actions status](https://github.com/webbertakken/unity-test-runner/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-test-runner#all-in-one-mode) |
 
 #### Build
 
