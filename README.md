@@ -2,7 +2,7 @@
 
 [![Actions status](https://github.com/WebberTakken/unity-actions/workflows/Actions%20😎/badge.svg)](https://github.com/WebberTakken/unity-actions/workflows/Actions%20😎/badge.svg)
 
-Github actions for testing and building Unity projects.  🦄
+Github actions for testing and building Unity projects.
 
 Contributions are welcomed!
 
@@ -34,8 +34,8 @@ Detailed instructions can be found in each action below.
 
 | Description             | Done | Status |
 |-------------------------|------|--------|
-| [Request activation file](https://github.com/webbertakken/unity-request-manual-activation-file) | ✔ | [![Actions status](https://github.com/WebberTakken/unity-request-manual-activation-file/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/WebberTakken/unity-request-manual-activation-file/workflows/Actions%20%F0%9F%98%8E/badge.svg) |
-| Activate license | ✔ | Not yet separated |
+| [Request activation file](https://github.com/marketplace/actions/unity-request-activation-file) | ✔ | [![Actions status](https://github.com/WebberTakken/unity-request-manual-activation-file/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/WebberTakken/unity-request-manual-activation-file/workflows/Actions%20%F0%9F%98%8E/badge.svg) |
+| [Activate license](https://github.com/marketplace/actions/unity-activate) | ✔ | [![Actions status](https://github.com/WebberTakken/unity-activate/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/WebberTakken/unity-activate/workflows/Actions%20%F0%9F%98%8E/badge.svg) |
 
 #### Test
 
