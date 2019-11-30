@@ -13,7 +13,7 @@ Here's a complete mental model of how to build, test and deploy your Unity app.
 1. Checkout your repository
 2. Configure `request activation file` job.
 3. Activate your license and 
-[add](https://github.com/webbertakken/unity-request-manual-activation-file-action)
+[add](https://github.com/webbertakken/unity-request-manual-activation-file)
 the environment variable `UNITY_LICENSE`.
     - Optionally verify your license using `Activate licence` job.
 4. Configure your test jobs.
@@ -28,7 +28,7 @@ Detailed instructions can be found in each action below.
 |-------------------------|------|--------|
 | [Checkout project](https://github.com/actions/checkout) | ✔ | Native support |
 | | | |
-| [Request activation file](https://github.com/webbertakken/unity-request-manual-activation-file-action) | ✔ | [![Actions status](https://github.com/WebberTakken/unity-request-manual-activation-file-action/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/WebberTakken/unity-request-manual-activation-file-action/workflows/Actions%20%F0%9F%98%8E/badge.svg) |
+| [Request activation file](https://github.com/webbertakken/unity-request-manual-activation-file) | ✔ | [![Actions status](https://github.com/WebberTakken/unity-request-manual-activation-file/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/WebberTakken/unity-request-manual-activation-file/workflows/Actions%20%F0%9F%98%8E/badge.svg) |
 | Activate license | ✔ | Not yet separated |
 | | | |
 | Test all in one | ✔ | Not yet separated |
