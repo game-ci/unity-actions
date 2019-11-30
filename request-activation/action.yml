@@ -1,5 +1,0 @@
-name: 'Request activation'
-description: 'Request activation using credentials or license file'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
