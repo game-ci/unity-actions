@@ -6,7 +6,7 @@ jobs:
     name: Request manual activation file 🔑
     runs-on: ubuntu-latest
     steps:
-      # Checkout repository (required to test local actions)
+      # Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v1
 
@@ -26,13 +26,13 @@ jobs:
     name: Request activation ✔
     runs-on: ubuntu-latest
     steps:
-      # Checkout repository (required to test local actions)
+      # Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v1
 
-      # Configure generic activation (local to the actions container)
-      - name: Request activation
-        uses: ./request-activation
+      # Activate Unity
+      - name: Unity - Activate
+        uses: webbertakken/unity-activate@v1
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
