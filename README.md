@@ -49,12 +49,12 @@ Detailed instructions can be found in each action below.
 
 | Description             | Done | Status |
 |-------------------------|------|--------|
-| Build for WebGL | ❌ | In progress |
-| Build for Windows | ❌ | In progress |
-| Build for Linux | ❌ | In progress |
-| Build for MacOS | ❌ | In progress |
-| Build for Android | ❌ | In progress |
-| Build for iOS | ❌ | In progress |
+| [Build for WebGL](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-builder#webgl) |
+| [Build for Windows](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Build for Linux](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Build for MacOS](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Build for Android](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Build for iOS](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
 
 #### Reference implementation
 
@@ -63,6 +63,6 @@ A full example implementation can be found in `main.yml` of this repo.
 ## Credits
 
 Huge thanks to
-[gableroux](https://gableroux.com/)
+[GabLeRoux](https://github.com/GabLeRoux)
 for his docker [image](https://hub.docker.com/r/gableroux/unity3d/)
 and gitlab-ci [example](https://gitlab.com/gableroux/unity3d).
