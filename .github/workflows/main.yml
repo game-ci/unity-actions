@@ -119,7 +119,7 @@ jobs:
       # Configure builder
       - name: Build project
         id: buildStep
-        uses: ./
+        uses: webbertakken/unity-builder@v0.1
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_PROJECT_PATH: test-project
