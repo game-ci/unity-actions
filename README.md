@@ -18,7 +18,8 @@ the environment variable `UNITY_LICENSE`.
     - Optionally verify your license using `Activate licence` job.
 4. Configure your test jobs.
 5. Create builds for your desired targets.
-6. Deploy your application.
+6. Optionally, return your license (applicable to pro licenses only)
+7. Deploy your application.
 
 Detailed instructions can be found in each action below.
 
@@ -36,6 +37,7 @@ Detailed instructions can be found in each action below.
 |-------------------------|------|--------|
 | [Request activation file](https://github.com/marketplace/actions/unity-request-activation-file) | ✔ | [![Actions status](https://github.com/webbertakken/unity-request-manual-activation-file/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-request-manual-activation-file) |
 | [Activate license](https://github.com/marketplace/actions/unity-activate) | ✔ | [![Actions status](https://github.com/webbertakken/unity-activate/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-activate) |
+| [Return license](https://github.com/marketplace/actions/unity-return-license) | ✔ | [![Actions status](https://github.com/webbertakken/unity-return-license/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-return-license) |
 
 #### Test
 
