@@ -134,3 +134,22 @@ jobs:
         with:
           name: Build
           path: ${{ steps.buildStep.outputs.allBuildsPath }}
+
+  activateAndThenReturnLicense:
+    name: returnLicense 🎈
+    runs-on: ubuntu-latest
+    env:
+      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+    steps:
+      # Checkout repository (required to test local actions)
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      # Activate Unity
+      - name: Activate Unity
+        uses: webbertakken/unity-activate@v1
+
+      # Return License
+      - name: Return license
+        uses: webbertakken/unity-return-license@v0.1
