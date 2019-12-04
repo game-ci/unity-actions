@@ -2,7 +2,7 @@
 
 [![Actions status](https://github.com/webbertakken/unity-actions/workflows/Actions%20😎/badge.svg)](https://github.com/webbertakken/unity-actions/actions?query=branch%3Amaster+workflow%3A%22Actions+%F0%9F%98%8E%22)
 
-Github actions for testing and building Unity projects.
+GitHub actions for testing and building Unity projects.
 
 Contributions are welcomed!
 
