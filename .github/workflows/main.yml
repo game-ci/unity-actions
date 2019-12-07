@@ -1,5 +1,5 @@
 name: Actions 😎
-on: [push]
+on: [push, pull_request]
 
 jobs:
   requestManualActivationFile:
@@ -19,7 +19,7 @@ jobs:
       - name: Expose as artifact
         uses: actions/upload-artifact@v1
         with:
-          name: ${{ steps.getManualLicenseFile.outputs.filePath }}
+          name: Manual Activation File
           path: ${{ steps.getManualLicenseFile.outputs.filePath }}
 
   requestActivation:
