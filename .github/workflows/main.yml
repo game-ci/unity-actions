@@ -1,7 +1,11 @@
 name: Actions 😎
+
 on:
   pull_request: {}
   push: { branches: [master] }
+
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
   requestManualActivationFile:
@@ -114,28 +118,19 @@ jobs:
     name: Build for WebGL 🕸
     runs-on: ubuntu-latest
     steps:
-      # Checkout repository (required to test local actions)
-      - name: Checkout repository
-        uses: actions/checkout@v1
-
-      # Configure builder
-      - name: Build project
-        id: buildStep
-        uses: webbertakken/unity-builder@v0.1
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_PROJECT_PATH: test-project
-          BUILD_NAME: TestBuild
-          BUILD_TARGET: WebGL
-          BUILDS_PATH: builds
-          BUILD_COMMAND: ""
-
-      # Upload distributables
-      - name: Upload Build
-        uses: actions/upload-artifact@v1
+      - uses: actions/checkout@v1
+      - uses: webbertakken/unity-activate@v1
+      - uses: webbertakken/unity-builder@master
+        with:
+          projectPath: "."
+          unityVersion: "2019.2.11f1"
+          targetPlatform: WebGL
+      - uses: webbertakken/unity-return-license@v1
+        if: always()
+      - uses: actions/upload-artifact@v1
         with:
           name: Build
-          path: ${{ steps.buildStep.outputs.allBuildsPath }}
+          path: build
 
   activateAndThenReturnLicense:
     name: returnLicense 🎈
