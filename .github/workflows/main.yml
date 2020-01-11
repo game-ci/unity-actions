@@ -115,15 +115,15 @@ jobs:
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
   buildForWebGL:
-    name: Build for WebGL 🕸
+    name: Build for StandaloneWindows64 🗗
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: webbertakken/unity-builder@master
+      - uses: webbertakken/unity-builder@v0.5
         with:
           projectPath: test-project
           unityVersion: 2019.2.11f1
-          targetPlatform: WebGL
+          targetPlatform: StandaloneWindows64
       - uses: actions/upload-artifact@v1
         with:
           name: Build
