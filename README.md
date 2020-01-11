@@ -56,11 +56,16 @@ Detailed instructions can be found in each action below.
 | Description             | Done | Status |
 |-------------------------|------|--------|
 | [Build for WebGL](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-builder#webgl) |
-| [Build for Windows](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
-| [Build for Linux](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
-| [Build for MacOS](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Build for Windows](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-builder#windows) |
+| [Build for Linux](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-builder#linux) |
+| [Build for MacOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-builder#macos) |
 | [Build for Android](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
-| [Build for iOS](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Build for iOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/webbertakken/unity-builder#ios) |
+| [Build for Windows store](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Build for PS4](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Build for XboxOne](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Build for tvOS](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Build for Switch](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
 
 #### Reference implementation
 

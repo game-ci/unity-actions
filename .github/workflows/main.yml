@@ -119,14 +119,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: webbertakken/unity-activate@v1
       - uses: webbertakken/unity-builder@master
         with:
-          projectPath: "."
-          unityVersion: "2019.2.11f1"
+          projectPath: test-project
+          unityVersion: 2019.2.11f1
           targetPlatform: WebGL
-      - uses: webbertakken/unity-return-license@v1
-        if: always()
       - uses: actions/upload-artifact@v1
         with:
           name: Build
