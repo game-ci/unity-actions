@@ -12,7 +12,7 @@ Contributions are welcomed!
 
 ## Workflow steps
 
-Here's a complete mental model of how to build, test and deploy your Unity app.
+Here's a complete mental model for how to build, test and deploy your Unity app.
  
 1. Checkout your repository
 2. Configure `request activation file` job.
