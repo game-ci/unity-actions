@@ -119,7 +119,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: webbertakken/unity-builder@v0.5
+      - uses: webbertakken/unity-builder@v0.8
         with:
           projectPath: test-project
           unityVersion: 2019.2.11f1
