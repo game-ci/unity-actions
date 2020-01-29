@@ -22,7 +22,7 @@ jobs:
     steps:
       # Checkout repository
       - name: Checkout repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       # Request manual activation file
       - name: Request manual activation file
@@ -44,7 +44,7 @@ jobs:
     steps:
       # Checkout repository
       - name: Checkout repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       # Activate Unity
       - name: Unity - Activate
@@ -58,7 +58,9 @@ jobs:
     steps:
       # Checkout repository (required to test local actions)
       - name: Checkout repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          lfs: true
 
       # Configure test runner
       - name: Run tests
@@ -82,7 +84,9 @@ jobs:
     steps:
       # Checkout repository (required to test local actions)
       - name: Checkout repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          lfs: true
 
       # Configure test runner
       - name: Run tests
@@ -106,7 +110,9 @@ jobs:
     steps:
       # Checkout repository (required to test local actions)
       - name: Checkout repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          lfs: true
 
       # Configure test runner
       - name: Run tests
@@ -141,7 +147,9 @@ jobs:
           - iOS # Build an iOS player.
           - WebGL # WebGL.
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
       - uses: actions/cache@v1.1.0
         with:
           path: ${{ matrix.projectPath }}/Library
@@ -168,7 +176,9 @@ jobs:
     steps:
       # Checkout repository (required to test local actions)
       - name: Checkout repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          lfs: true
 
       # Activate Unity
       - name: Activate Unity
