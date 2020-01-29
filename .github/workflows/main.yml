@@ -124,8 +124,8 @@ jobs:
           name: Test results (all modes)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
-  buildForWebGL:
-    name: Build for StandaloneWindows64 🗗
+  buildForSomePlatforms:
+    name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -140,7 +140,6 @@ jobs:
           - StandaloneLinux64 # Build a Linux 64-bit standalone.
           - iOS # Build an iOS player.
           - WebGL # WebGL.
-
     steps:
       - uses: actions/checkout@v1
       - uses: actions/cache@v1.1.0
