@@ -48,7 +48,7 @@ jobs:
 
       # Activate Unity
       - name: Unity - Activate
-        uses: webbertakken/unity-activate@v1
+        uses: webbertakken/unity-activate@v1.2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
@@ -170,19 +170,14 @@ jobs:
   activateAndThenReturnLicense:
     name: returnLicense 🎈
     runs-on: ubuntu-latest
-    env:
-      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-
     steps:
       # Checkout repository (required to test local actions)
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          lfs: true
 
       # Activate Unity
       - name: Activate Unity
-        uses: webbertakken/unity-activate@v1
+        uses: webbertakken/unity-activate@v1.2
 
       # Return License
       - name: Return license
