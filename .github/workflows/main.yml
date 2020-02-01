@@ -9,38 +9,41 @@ env:
 
 jobs:
   readmeWorkflow:
-    # Checkout
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      with:
-        lfs: true
+    name: Readme Workflow ✨
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
 
-    # Cache
-    - uses: actions/cache@v1.1.0
-      with:
-        path: test-project/Library
-        key: Library-test-project-WebGL
+      # Cache
+      - uses: actions/cache@v1.1.0
+        with:
+          path: test-project/Library
+          key: Library-test-project-WebGL
 
-    # Test
-    - name: Run tests
-      uses: webbertakken/unity-test-runner@v1.2
-      with:
-        projectPath: test-project
-        unityVersion: 2019.2.11f1
+      # Test
+      - name: Run tests
+        uses: webbertakken/unity-test-runner@v1.2
+        with:
+          projectPath: test-project
+          unityVersion: 2019.2.11f1
 
-    # Build
-    - name: Build project
-      uses: webbertakken/unity-builder@v0.9
-      with:
-        projectPath: test-project
-        unityVersion: 2019.2.11f1
-        targetPlatform: WebGL
+      # Build
+      - name: Build project
+        uses: webbertakken/unity-builder@v0.9
+        with:
+          projectPath: test-project
+          unityVersion: 2019.2.11f1
+          targetPlatform: WebGL
 
-    # Output
-    - uses: actions/upload-artifact@v1
-      with:
-        name: Build
-        path: build
+      # Output
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Build
+          path: build
 
   #
   # End of readme workflow.
@@ -61,19 +64,16 @@ jobs:
           - 2019.2.17f1
     steps:
       # Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       # Request manual activation file
-      - name: Request manual activation file
+      - uses: webbertakken/unity-request-manual-activation-file@v1.1
         id: getManualLicenseFile
-        uses: webbertakken/unity-request-manual-activation-file@v1.1
         with:
           unityVersion: ${{ matrix.unityVersion }}
 
       # Upload artifact (Unity_v20XX.X.XXXX.alf)
-      - name: Expose as artifact
-        uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v1
         with:
           name: Manual Activation File
           path: ${{ steps.getManualLicenseFile.outputs.filePath }}
@@ -82,39 +82,23 @@ jobs:
     name: Request activation ✔
     runs-on: ubuntu-latest
     steps:
-      # Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      # Activate Unity
-      - name: Unity - Activate
-        uses: webbertakken/unity-activate@v1.2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+      - uses: actions/checkout@v2
+      - uses: webbertakken/unity-activate@v1.2
 
   activateAndThenReturnLicense:
     name: returnLicense 🎈
     runs-on: ubuntu-latest
     steps:
-      # Checkout repository (required to test local actions)
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      # Activate Unity
-      - name: Activate Unity
-        uses: webbertakken/unity-activate@v1.2
-
-      # Return License
-      - name: Return license
-        uses: webbertakken/unity-return-license@v0.1
+      - uses: actions/checkout@v2
+      - uses: webbertakken/unity-activate@v1.2
+      - uses: webbertakken/unity-return-license@v1
 
   testRunnerInEditMode:
     name: Test in editmode 📝
     runs-on: ubuntu-latest
     steps:
       # Checkout repository (required to test local actions)
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           lfs: true
 
@@ -128,17 +112,14 @@ jobs:
             Library-
 
       # Configure test runner
-      - name: Run tests
+      - uses: webbertakken/unity-test-runner@v1.2
         id: testRunner
-        uses: webbertakken/unity-test-runner@v1
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_PROJECT_PATH: test-project
-          TEST_MODE: editmode
+        with:
+          projectPath: test-project
+          testMode: editmode
 
       # Upload artifact
-      - name: Expose as artifact
-        uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v1
         with:
           name: Test results (edit mode)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
@@ -148,8 +129,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout repository (required to test local actions)
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           lfs: true
 
@@ -163,17 +143,14 @@ jobs:
             Library-
 
       # Configure test runner
-      - name: Run tests
+      - uses: webbertakken/unity-test-runner@v1.2
         id: testRunner
-        uses: webbertakken/unity-test-runner@v1
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_PROJECT_PATH: test-project
-          TEST_MODE: playmode
+          projectPath: test-project
+          testMode: playmode
 
       # Upload artifact
-      - name: Expose as artifact
-        uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v1
         with:
           name: Test results (play mode)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
@@ -183,8 +160,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout repository (required to test local actions)
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           lfs: true
 
@@ -198,22 +174,23 @@ jobs:
             Library-
 
       # Configure test runner
-      - name: Run tests
+      - uses: webbertakken/unity-test-runner@v1.2
         id: testRunner
-        uses: webbertakken/unity-test-runner@v1
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_PROJECT_PATH: test-project
-          TEST_MODE: all
+        with:
+          projectPath: test-project
+          testMode: all
 
       # Upload artifacts
-      - name: Expose as artifact
-        uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v1
         with:
           name: Test results (all modes)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
-  buildForSomePlatforms:
+  #
+  # Complete advanced workflow
+  #
+
+  buildAndTestForSomePlatforms:
     name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
     runs-on: ubuntu-latest
     strategy:
@@ -240,11 +217,21 @@ jobs:
           restore-keys: |
             Library-${{ matrix.projectPath }}-
             Library-
+      - uses: webbertakken/unity-test-runner@v1.2
+        id: testRunner
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Test results (all modes)
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
       - uses: webbertakken/unity-builder@v0.9
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
+          customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue
       - uses: actions/upload-artifact@v1
         with:
           name: Build
