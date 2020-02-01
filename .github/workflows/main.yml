@@ -52,6 +52,22 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
+  activateAndThenReturnLicense:
+    name: returnLicense 🎈
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout repository (required to test local actions)
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Activate Unity
+      - name: Activate Unity
+        uses: webbertakken/unity-activate@v1.2
+
+      # Return License
+      - name: Return license
+        uses: webbertakken/unity-return-license@v0.1
+
   testRunnerInEditMode:
     name: Test in editmode 📝
     runs-on: ubuntu-latest
@@ -61,6 +77,15 @@ jobs:
         uses: actions/checkout@v2
         with:
           lfs: true
+
+      # Cache
+      - uses: actions/cache@v1.1.0
+        with:
+          path: test-project/Library
+          key: Library-test-project-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-test-project-
+            Library-
 
       # Configure test runner
       - name: Run tests
@@ -88,6 +113,15 @@ jobs:
         with:
           lfs: true
 
+      # Cache
+      - uses: actions/cache@v1.1.0
+        with:
+          path: test-project/Library
+          key: Library-test-project-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-test-project-
+            Library-
+
       # Configure test runner
       - name: Run tests
         id: testRunner
@@ -113,6 +147,15 @@ jobs:
         uses: actions/checkout@v2
         with:
           lfs: true
+
+      # Cache
+      - uses: actions/cache@v1.1.0
+        with:
+          path: test-project/Library
+          key: Library-test-project-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-test-project-
+            Library-
 
       # Configure test runner
       - name: Run tests
@@ -166,19 +209,3 @@ jobs:
         with:
           name: Build
           path: build
-
-  activateAndThenReturnLicense:
-    name: returnLicense 🎈
-    runs-on: ubuntu-latest
-    steps:
-      # Checkout repository (required to test local actions)
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      # Activate Unity
-      - name: Activate Unity
-        uses: webbertakken/unity-activate@v1.2
-
-      # Return License
-      - name: Return license
-        uses: webbertakken/unity-return-license@v0.1
