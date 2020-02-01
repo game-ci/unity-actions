@@ -50,11 +50,13 @@ either `personal` or `professoinal` license below.
    [Request Manual Activation File](https://github.com/marketplace/actions/unity-request-activation-file).
 3. Request your license on 
    [license.unity3d.com](https://license.unity3d.com/manual).
-4. Open `Github` > `<Your repository>` > `Settings` > `Secrets` and set the contents of the resulting license file to `UNITY_LICENSE` as a secret.
+4. Open `Github` > `<Your repository>` > `Settings` > `Secrets`
+5. Create a secret called `UNITY_LICENSE` and add the contents of the obtained license file.
 
 ##### Professional license
 
-1. Open `Github` > `<Your repository>` > `Settings` > `Secrets` and create the following secrets;
+1. Open `Github` > `<Your repository>` > `Settings` > `Secrets`
+2. Create the following secrets;
     - `UNITY_SERIAL` - _(Add the code that looks like `XX-XXXX-XXXX-XXXX-XXXX-XXXX`)_
     - `UNITY_EMAIL` - _(Add the email address that you use to login to Unity)_
     - `UNITY_PASSWORD` - _(Add the password that you use to login to Unity)_
@@ -66,7 +68,7 @@ either `personal` or `professoinal` license below.
   and for pro licenses also 
     [Return License](https://github.com/marketplace/actions/unity-return-license). This is to free up the license allocation after usage.
 
-    > Note: Test runner and Builder already include these steps.
+    > _Note: Test runner and Builder already include these steps._
 
 ### Setting up a workflow
 
@@ -86,12 +88,14 @@ Create a file called `.github/workflows/main.yml` in your repository and configu
 
 Detailed instructions for each step can be found in the corresponding actions.
 
-#### Example
+## Simple example
 
 Below is a simple example.
  
 This example assumes that your Unity project is in the root of your repository.
 
+> _Note: this repository tests this workflow_
+>
 ```yaml
 name: Actions 😎
 
@@ -140,6 +144,71 @@ jobs:
           path: build
 ```
 
+## Advanced example
+
+To get an idea of how to create a more advanced workflows,
+have a look at the example below.
+
+> _Note: this repository tests this workflow_
+
+```yaml
+name: Actions 😎
+
+on:
+  pull_request: {}
+  push: { branches: [master] }
+
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+jobs:
+  buildAndTestForSomePlatforms:
+    name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        projectPath:
+          - test-project
+        unityVersion:
+          - 2019.2.11f1
+        targetPlatform:
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - StandaloneLinux64 # Build a Linux 64-bit standalone.
+          - iOS # Build an iOS player.
+          - WebGL # WebGL.
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - uses: actions/cache@v1.1.0
+        with:
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ matrix.projectPath }}-
+            Library-
+      - uses: webbertakken/unity-test-runner@v1.3
+        id: testRunner
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Test results (all modes)
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
+      - uses: webbertakken/unity-builder@v0.10
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+          customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Build
+          path: build
+```
 ## Project Status
 
 #### Checkout
