@@ -26,14 +26,14 @@ jobs:
 
       # Test
       - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.2
+        uses: webbertakken/unity-test-runner@v1.3
         with:
           projectPath: test-project
           unityVersion: 2019.2.11f1
 
       # Build
       - name: Build project
-        uses: webbertakken/unity-builder@v0.9
+        uses: webbertakken/unity-builder@v0.10
         with:
           projectPath: test-project
           unityVersion: 2019.2.11f1
@@ -112,7 +112,7 @@ jobs:
             Library-
 
       # Configure test runner
-      - uses: webbertakken/unity-test-runner@v1.2
+      - uses: webbertakken/unity-test-runner@v1.3
         id: testRunner
         with:
           projectPath: test-project
@@ -143,9 +143,9 @@ jobs:
             Library-
 
       # Configure test runner
-      - uses: webbertakken/unity-test-runner@v1.2
+      - uses: webbertakken/unity-test-runner@v1.3
         id: testRunner
-        env:
+        with:
           projectPath: test-project
           testMode: playmode
 
@@ -174,7 +174,7 @@ jobs:
             Library-
 
       # Configure test runner
-      - uses: webbertakken/unity-test-runner@v1.2
+      - uses: webbertakken/unity-test-runner@v1.3
         id: testRunner
         with:
           projectPath: test-project
@@ -217,7 +217,7 @@ jobs:
           restore-keys: |
             Library-${{ matrix.projectPath }}-
             Library-
-      - uses: webbertakken/unity-test-runner@v1.2
+      - uses: webbertakken/unity-test-runner@v1.3
         id: testRunner
         with:
           projectPath: ${{ matrix.projectPath }}
@@ -226,7 +226,7 @@ jobs:
         with:
           name: Test results (all modes)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
-      - uses: webbertakken/unity-builder@v0.9
+      - uses: webbertakken/unity-builder@v0.10
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
