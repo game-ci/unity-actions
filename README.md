@@ -8,11 +8,17 @@ The fastest and **easiest** way to automatically test and build any Unity projec
 
 ---
 
-#### Supported versions
+##### Supported versions
 
-It's generally considered good practice to use the same unity version for Unity Actions as you do to develop your project.
+It's generally considered good practice to use the same Unity version for Unity Actions as you do to develop your project.
 
-Check the [list](https://hub.docker.com/r/gableroux/unity3d/tags) of supported versions by Unity Actions. 
+Unity Actions are based on the 
+[unity3d](https://gitlab.com/gableroux/unity3d) 
+images from 
+[GabLeRoux](https://github.com/GabLeRoux). 
+Any version in this 
+[list](https://hub.docker.com/r/gableroux/unity3d/tags)
+can be used to test and build projects.
 
 ## Setup
 
@@ -23,8 +29,6 @@ There are two parts to setting up Unity Actions;
 - Configuring a license
 - Setting up a workflow
 
-Both steps are described in detail below;
-
 ##### First time using GitHub Actions?
 
 Read the official documentation on how to setup a 
@@ -32,7 +36,7 @@ Read the official documentation on how to setup a
 
 Any subsequent steps assume you have read the above.
 
-#### Setting up license
+### Setting up license
 
 All actions utilize an installment of Unity, and as such need to be activated.
 
@@ -64,7 +68,7 @@ either `personal` or `professoinal` license below.
 
     > Note: Test runner and Builder already include these steps.
 
-#### Setting up a workflow
+### Setting up a workflow
 
 Setting up a workflow is easy!
 
@@ -180,9 +184,6 @@ jobs:
 
 A full example implementation can be found in `main.yml` of this repo.
 
-## Credits
+## Licence 
 
-Huge thanks to
-[GabLeRoux](https://github.com/GabLeRoux)
-for his docker [image](https://hub.docker.com/r/gableroux/unity3d/)
-and gitlab-ci [example](https://gitlab.com/gableroux/unity3d).
+[MIT](./LICENSE)
