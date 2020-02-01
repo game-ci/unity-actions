@@ -122,13 +122,13 @@ jobs:
 
       # Test
       - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.2
+        uses: webbertakken/unity-test-runner@v1.3
         with:
           unityVersion: 2019.2.11f1
 
       # Build
       - name: Build project
-        uses: webbertakken/unity-builder@v0.9
+        uses: webbertakken/unity-builder@v0.10
         with:
           unityVersion: 2019.2.11f1
           targetPlatform: WebGL 
