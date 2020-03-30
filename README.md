@@ -63,14 +63,14 @@ can be used to test and build projects.
 
 ## Setup
 
-##### Mental model
+#### Mental model
 
 There are two parts to setting up Unity Actions;
 
 - Configuring a license
 - Setting up a workflow
 
-##### First time using GitHub Actions?
+#### First time using GitHub Actions?
 
 Read the official documentation on how to setup a 
 [workflow](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow).
@@ -131,7 +131,7 @@ Detailed instructions for each step can be found in the corresponding actions.
 
 ## Simple example
 
-Below is a simple example.
+Below is a simple example. It is __recommended__ to start from here.
  
 This example assumes that your Unity project is in the root of your repository.
 
@@ -251,6 +251,22 @@ jobs:
           path: build
 ```
 
+Have any questions or comments? Feel free to create an issue!
+
+## Contributions
+
+To contribute please follow the contribution
+[guide](./CONTRIBUTING.md)
+to get set up quickly.
+
+This repository, and all related actions are open for your suggested changes!
+
+Feel free to submit a pull request with the suggested changes.
+
 ## Licence 
 
+This repository is licensed under the
 [MIT](./LICENSE)
+license.
+
+This also includes contributions from the community.
