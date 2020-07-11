@@ -1,16 +1,23 @@
-# Unity Actions
-
-[![Actions status](https://github.com/webbertakken/unity-actions/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-actions/actions?query=branch%3Amaster+event%3Apush+workflow%3A"Actions%20%F0%9F%98%8E")
-
----
+<div align="center">
+<a href="https://github.com/marketplace/actions/unity-actions">
+<img width="800" src="media/UnityActions-Logo.png" alt="Unity Actions">
+</a>
+<br />
+<br />
 
 The fastest and **easiest** way to automatically test and build any Unity project!
 
----
+Part of the <a href="https://unity-ci.com"><img height="30" src="media/UnityCI-ReferenceLogo.png" alt="Unity CI"></a> open source project.
+<br />
+<br />
+
+[![Actions status](https://github.com/webbertakken/unity-actions/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-actions/actions?query=branch%3Amaster+event%3Apush+workflow%3A"Actions%20%F0%9F%98%8E")
+<br />
+<br />
+
+</div>
 
 #### Supported versions
-
-It's generally considered good practice to use the same Unity version for Unity Actions as you do to develop your project.
 
 Unity Actions are based on the 
 [unity3d](https://gitlab.com/gableroux/unity3d) 
@@ -53,7 +60,7 @@ can be used to test and build projects.
 | [Build for Windows](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-builder#windows) |
 | [Build for Linux](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-builder#linux) |
 | [Build for MacOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-builder#macos) |
-| [Build for Android](https://github.com/marketplace/actions/unity-builder) | ❕ | In progress |
+| [Build for Android](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-builder#android) |
 | [Build for iOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-builder#ios) |
 | [Build for Windows store](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
 | [Build for PS4](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
@@ -67,19 +74,24 @@ can be used to test and build projects.
 
 There are two parts to setting up Unity Actions;
 
-- Configuring a license
-- Setting up a workflow
+- Understand how Github Actions works
+- Configuring a license from Unity
+- Setting up a workflow for your project
+
+**Detailed setup instructions can be found in the [docs](https://unity-ci.com/docs) at [unity-ci.com](https://unity-ci.com).**
 
 #### First time using GitHub Actions?
 
 Read the official documentation on how to setup a 
 [workflow](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow).
 
-Any subsequent steps assume you have read the above.
+Any subsequent steps assume you have read the above.  
 
 ### Setting up license
 
 All actions utilize an installment of Unity, and as such need to be activated.
+
+It's generally considered good practice to use the same Unity version for Unity Actions as you do to develop your project.
 
 To set up your license for use in Unity Actions, create a file called 
 `.github/workflows/activate.yml` in your repository and follow the steps for 
