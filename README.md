@@ -1,3 +1,5 @@
+# Unity-Actions
+
 The fastest and **easiest** way to automatically test and build any Unity project!
 
 Part of the [GameCI](https://github.com/game-ci/) open source project.
@@ -86,7 +88,7 @@ This repository and all related actions are open for your suggested changes!
 
 Feel free to submit a pull request with the suggested changes.
 
-## Licence 
+## Licence
 
 This repository is [MIT](./LICENSE) licensed.
 
