@@ -1,4 +1,6 @@
-# Unity-Actions
+# Unity Actions
+
+(Not affiliated with Unity Technologies)
 
 The fastest and **easiest** way to automatically test and build any Unity project!
 
@@ -9,8 +11,6 @@ Part of the [GameCI](https://github.com/game-ci/) open source project.
 [![Actions status](https://github.com/webbertakken/unity-actions/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-actions/actions?query=branch%3Amaster+event%3Apush+workflow%3A"Actions%20%F0%9F%98%8E")
 <br />
 <br />
-
-</div>
 
 #### Supported versions
 
@@ -66,8 +66,8 @@ can be used to test and build projects.
 ## How to use
 
 Find the
-[docs](https://game.ci/docs/github)
-on the Unity CI
+[docs](https://game.ci/docs)
+on the GameCI
 [website](https://game.ci/).
 
 Have any questions or comments? Feel free to create an issue!
