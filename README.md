@@ -1,13 +1,6 @@
-<div align="center">
-<a href="https://github.com/marketplace/actions/unity-actions">
-<img width="800" src="media/UnityActions-Logo.png" alt="Unity Actions">
-</a>
-<br />
-<br />
-
 The fastest and **easiest** way to automatically test and build any Unity project!
 
-Part of the <a href="https://unity-ci.com"><img height="30" src="media/UnityCI-ReferenceLogo.png" alt="Unity CI"></a> open source project.
+Part of the [GameCI](https://github.com/game-ci/) open source project.
 <br />
 <br />
 
@@ -71,16 +64,16 @@ can be used to test and build projects.
 ## How to use
 
 Find the
-[docs](https://unity-ci.com/docs/github)
+[docs](https://game.ci/docs/github)
 on the Unity CI
-[website](https://unity-ci.com/).
+[website](https://game.ci/).
 
 Have any questions or comments? Feel free to create an issue!
 
 ## Community
 
 Feel free to join us on
-<a href="http://unity-ci.com/discord"><img height="30" src="media/Discord-Logo.svg" alt="Discord" /></a>
+<a href="http://game.ci/discord"><img height="30" src="media/Discord-Logo.svg" alt="Discord" /></a>
 and engage with the community.
 
 ## Contributions
