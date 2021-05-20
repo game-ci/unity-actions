@@ -19,28 +19,26 @@ jobs:
           lfs: true
 
       # Cache
-      - uses: actions/cache@v1.1.0
+      - uses: actions/cache@v2
         with:
-          path: test-project/Library
+          path: test-projects/test-project/Library
           key: Library-test-project-WebGL
 
       # Test
       - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.3
+        uses: webbertakken/unity-test-runner@v2
         with:
-          projectPath: test-project
-          unityVersion: 2019.2.11f1
+          projectPath: test-projects/test-project
 
       # Build
       - name: Build project
-        uses: webbertakken/unity-builder@v0.10
+        uses: webbertakken/unity-builder@v2
         with:
-          projectPath: test-project
-          unityVersion: 2019.2.11f1
+          projectPath: test-projects/test-project
           targetPlatform: WebGL
 
       # Output
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: Build
           path: build
@@ -54,41 +52,34 @@ jobs:
   requestManualActivationFile:
     name: Request manual activation file 🔑
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        unityVersion:
-          - 2019.2.11f1
     steps:
       # Checkout repository
       - uses: actions/checkout@v2
 
       # Request manual activation file
-      - uses: webbertakken/unity-request-manual-activation-file@v1.1
+      - uses: webbertakken/unity-request-manual-activation-file@v2
         id: getManualLicenseFile
-        with:
-          unityVersion: ${{ matrix.unityVersion }}
 
       # Upload artifact (Unity_v20XX.X.XXXX.alf)
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: Manual Activation File
           path: ${{ steps.getManualLicenseFile.outputs.filePath }}
 
-  requestActivation:
-    name: Request activation ✔
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: webbertakken/unity-activate@v1.2
-
-  activateAndThenReturnLicense:
-    name: returnLicense 🎈
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: webbertakken/unity-activate@v1.2
-      - uses: webbertakken/unity-return-license@v1
+#  requestActivation:
+#    name: Request activation ✔
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: webbertakken/unity-activate@v2
+#
+#  activateAndThenReturnLicense:
+#    name: returnLicense 🎈
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: webbertakken/unity-activate@v2
+#      - uses: webbertakken/unity-return-license@v2
 
   testRunnerInEditMode:
     name: Test in editmode 📝
@@ -100,23 +91,22 @@ jobs:
           lfs: true
 
       # Cache
-      - uses: actions/cache@v1.1.0
+      - uses: actions/cache@v2
         with:
-          path: test-project/Library
-          key: Library-test-project-${{ matrix.targetPlatform }}
+          path: test-projects/test-project/Library
+          key: Library-test-project
           restore-keys: |
-            Library-test-project-
-            Library-
+            Library-test-
 
       # Configure test runner
-      - uses: webbertakken/unity-test-runner@v1.3
+      - uses: webbertakken/unity-test-runner@v2
         id: testRunner
         with:
-          projectPath: test-project
+          projectPath: test-projects/test-project
           testMode: editmode
 
       # Upload artifact
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: Test results (edit mode)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
@@ -131,23 +121,23 @@ jobs:
           lfs: true
 
       # Cache
-      - uses: actions/cache@v1.1.0
+      - uses: actions/cache@v2
         with:
-          path: test-project/Library
+          path: test-projects/test-project/Library
           key: Library-test-project-${{ matrix.targetPlatform }}
           restore-keys: |
             Library-test-project-
             Library-
 
       # Configure test runner
-      - uses: webbertakken/unity-test-runner@v1.3
+      - uses: webbertakken/unity-test-runner@v2
         id: testRunner
         with:
-          projectPath: test-project
+          projectPath: test-projects/test-project
           testMode: playmode
 
       # Upload artifact
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: Test results (play mode)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
@@ -162,23 +152,23 @@ jobs:
           lfs: true
 
       # Cache
-      - uses: actions/cache@v1.1.0
+      - uses: actions/cache@v2
         with:
-          path: test-project/Library
+          path: test-projects/test-project/Library
           key: Library-test-project-${{ matrix.targetPlatform }}
           restore-keys: |
             Library-test-project-
             Library-
 
       # Configure test runner
-      - uses: webbertakken/unity-test-runner@v1.3
+      - uses: webbertakken/unity-test-runner@v2
         id: testRunner
         with:
-          projectPath: test-project
+          projectPath: test-projects/test-project
           testMode: all
 
       # Upload artifacts
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: Test results (all modes)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
@@ -188,15 +178,13 @@ jobs:
   #
 
   buildAndTestForSomePlatforms:
-    name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
+    name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         projectPath:
-          - test-project
-        unityVersion:
-          - 2019.2.11f1
+          - test-projects/test-project
         targetPlatform:
           - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
@@ -207,29 +195,27 @@ jobs:
       - uses: actions/checkout@v2
         with:
           lfs: true
-      - uses: actions/cache@v1.1.0
+      - uses: actions/cache@v2
         with:
           path: ${{ matrix.projectPath }}/Library
           key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
           restore-keys: |
             Library-${{ matrix.projectPath }}-
             Library-
-      - uses: webbertakken/unity-test-runner@v1.3
+      - uses: webbertakken/unity-test-runner@v2
         id: testRunner
         with:
           projectPath: ${{ matrix.projectPath }}
-          unityVersion: ${{ matrix.unityVersion }}
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: Test results (all modes)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
-      - uses: webbertakken/unity-builder@v0.10
+      - uses: webbertakken/unity-builder@v2
         with:
           projectPath: ${{ matrix.projectPath }}
-          unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
           customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
-          name: Build
-          path: build
+          name: Build (${{ matrix.targetPlatform }})
+          path: build/${{ matrix.targetPlatform }}
