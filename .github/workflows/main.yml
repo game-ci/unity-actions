@@ -12,14 +12,27 @@ jobs:
     name: Readme Workflow ✨
     runs-on: ubuntu-latest
     steps:
-      # Checkout
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          lfs: true
 
-      # Cache
-      - uses: actions/cache@v2
+      - name: Create LFS file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+
+      - name: Restore LFS cache
+        uses: actions/cache@v2
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
+
+      - name: Restore Library cache
+        uses: actions/cache@v2
         with:
           path: test-projects/test-project/Library
           key: Library-test-project-WebGL
@@ -85,13 +98,27 @@ jobs:
     name: Test in editmode 📝
     runs-on: ubuntu-latest
     steps:
-      # Checkout repository (required to test local actions)
-      - uses: actions/checkout@v2
-        with:
-          lfs: true
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      # Cache
-      - uses: actions/cache@v2
+      - name: Create LFS file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+
+      - name: Restore LFS cache
+        uses: actions/cache@v2
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
+
+      - name: Restore Library cache
+        uses: actions/cache@v2
         with:
           path: test-projects/test-project/Library
           key: Library-test-project
@@ -115,13 +142,27 @@ jobs:
     name: Test in playmode 📺
     runs-on: ubuntu-latest
     steps:
-      # Checkout repository (required to test local actions)
-      - uses: actions/checkout@v2
-        with:
-          lfs: true
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      # Cache
-      - uses: actions/cache@v2
+      - name: Create LFS file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+
+      - name: Restore LFS cache
+        uses: actions/cache@v2
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
+
+      - name: Restore Library cache
+        uses: actions/cache@v2
         with:
           path: test-projects/test-project/Library
           key: Library-test-project-${{ matrix.targetPlatform }}
@@ -147,12 +188,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout repository (required to test local actions)
-      - uses: actions/checkout@v2
-        with:
-          lfs: true
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      # Cache
-      - uses: actions/cache@v2
+      - name: Create LFS file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+
+      - name: Restore LFS cache
+        uses: actions/cache@v2
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
+
+      - name: Restore Library cache
+        uses: actions/cache@v2
         with:
           path: test-projects/test-project/Library
           key: Library-test-project-${{ matrix.targetPlatform }}
@@ -192,10 +248,27 @@ jobs:
           - iOS # Build an iOS player.
           - WebGL # WebGL.
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create LFS file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+
+      - name: Restore LFS cache
+        uses: actions/cache@v2
+        id: lfs-cache
         with:
-          lfs: true
-      - uses: actions/cache@v2
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
+
+      - name: Restore Library cache
+        uses: actions/cache@v2
         with:
           path: ${{ matrix.projectPath }}/Library
           key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
