@@ -17,8 +17,8 @@ jobs:
       matrix:
         projectPath:
 #          - test-projects/2018.3-legacy-render-pipeline
-          - test-projects/2019.3-universal-render-pipeline
-#          - test-projects/2019.3-high-definition-render-pipeline
+#          - test-projects/2019.3-universal-render-pipeline
+          - test-projects/2019.3-high-definition-render-pipeline
         targetPlatform:
 #          - StandaloneOSX
           - StandaloneWindows64
