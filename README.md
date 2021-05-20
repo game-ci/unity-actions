@@ -4,11 +4,11 @@
 
 The fastest and **easiest** way to automatically test and build any Unity project!
 
-Part of the [GameCI](https://github.com/game-ci/) open source project.
+Part of [GameCI](https://game.ci).
 <br />
 <br />
 
-[![Actions status](https://github.com/webbertakken/unity-actions/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-actions/actions?query=branch%3Amaster+event%3Apush+workflow%3A"Actions%20%F0%9F%98%8E")
+[![Actions status](https://github.com/game-ci/unity-actions/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-actions/actions?query=branch%3Amain+event%3Apush+workflow%3A"Actions%20%F0%9F%98%8E")
 <br />
 <br />
 
@@ -34,29 +34,29 @@ can be used to test and build projects.
 
 | Description             | Done | Status |
 |-------------------------|------|--------|
-| [Request activation file](https://github.com/marketplace/actions/unity-request-activation-file) | ✔ | [![Actions status](https://github.com/webbertakken/unity-request-manual-activation-file/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-request-manual-activation-file) |
-| [Activate license](https://github.com/marketplace/actions/unity-activate) | ✔ | [![Actions status](https://github.com/webbertakken/unity-activate/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-activate) |
-| [Return license](https://github.com/marketplace/actions/unity-return-license) | ✔ | [![Actions status](https://github.com/webbertakken/unity-return-license/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-return-license) |
+| [Request activation file](https://github.com/marketplace/actions/unity-request-activation-file) | ✔ | [![Actions status](https://github.com/game-ci/unity-request-activation-file/actions/workflows/main.yml/badge.svg)](https://github.com/game-ci/unity-request-activation-file) |
+| [Activate license](https://github.com/marketplace/actions/unity-activate) | ✔ | [![Actions status](https://github.com/game-ci/unity-activate/actions/workflows/main.yml/badge.svg)](https://github.com/game-ci/unity-activate) |
+| [Return license](https://github.com/marketplace/actions/unity-return-license) | ✔ | [![Actions status](https://github.com/game-ci/unity-return-license/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-return-license) |
 | [Caching dependencies](https://github.com/marketplace/actions/cache)  | ✔ | Native support |
 
 #### Test
 
 | Description             | Done | Status |
 |-------------------------|------|--------|
-| [Test edit mode](https://github.com/marketplace/actions/unity-test-runner) | ✔ | [![Actions status](https://github.com/webbertakken/unity-test-runner/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-test-runner#edit-mode) |
-| [Test play mode](https://github.com/marketplace/actions/unity-test-runner) | ✔ | [![Actions status](https://github.com/webbertakken/unity-test-runner/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-test-runner#play-mode) |
-| [Test all in one](https://github.com/marketplace/actions/unity-test-runner) | ✔ | [![Actions status](https://github.com/webbertakken/unity-test-runner/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-test-runner#all-in-one-mode) |
+| [Test edit mode](https://github.com/marketplace/actions/unity-test-runner) | ✔ | [![Actions status](https://github.com/game-ci/unity-test-runner/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/game-ci/unity-test-runner#edit-mode) |
+| [Test play mode](https://github.com/marketplace/actions/unity-test-runner) | ✔ | [![Actions status](https://github.com/game-ci/unity-test-runner/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/game-ci/unity-test-runner#play-mode) |
+| [Test all in one](https://github.com/marketplace/actions/unity-test-runner) | ✔ | [![Actions status](https://github.com/game-ci/unity-test-runner/workflows/Actions%20%F0%9F%98%8E/badge.svg)](https://github.com/game-ci/unity-test-runner#all-in-one-mode) |
 
 #### Build
 
 | Description             | Done | Status |
 |-------------------------|------|--------|
-| [Build for WebGL](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-builder#webgl) |
-| [Build for Windows](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-builder#windows) |
-| [Build for Linux](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-builder#linux) |
-| [Build for MacOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-builder#macos) |
-| [Build for Android](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-builder#android) |
-| [Build for iOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/webbertakken/unity-builder/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-builder#ios) |
+| [Build for WebGL](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/game-ci/unity-builder/workflows/Builds/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-builder#webgl) |
+| [Build for Windows](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/game-ci/unity-builder/workflows/Builds/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-builder#windows) |
+| [Build for Linux](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/game-ci/unity-builder/workflows/Builds/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-builder#linux) |
+| [Build for MacOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/game-ci/unity-builder/workflows/Builds/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-builder#macos) |
+| [Build for Android](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/game-ci/unity-builder/workflows/Builds/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-builder#android) |
+| [Build for iOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/game-ci/unity-builder/workflows/Builds/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-builder#ios) |
 | [Build for Windows store](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
 | [Build for PS4](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
 | [Build for XboxOne](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
