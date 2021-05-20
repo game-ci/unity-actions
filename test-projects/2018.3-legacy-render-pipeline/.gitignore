@@ -73,3 +73,4 @@ crashlytics-build.properties
 # Custom
 /.idea/
 /.backup/
+/artifacts/
