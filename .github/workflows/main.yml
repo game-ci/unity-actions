@@ -271,10 +271,10 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ matrix.projectPath }}/Library
-          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          key: Library-buildAndTest-${{ matrix.projectPath }}-buildAndTest-${{ matrix.targetPlatform }}
           restore-keys: |
+            Library-${{ matrix.projectPath }}-buildAndTest-
             Library-${{ matrix.projectPath }}-
-            Library-
       - uses: webbertakken/unity-test-runner@v2
         id: testRunner
         with:
