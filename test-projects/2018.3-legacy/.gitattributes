@@ -1,42 +1,24 @@
 * text=auto
 
 # Unity files
-*.meta -text merge=unityyamlmerge diff
-*.unity -text merge=unityyamlmerge diff
-*.asset -text merge=unityyamlmerge diff
-*.prefab -text merge=unityyamlmerge diff
-*.mat -text merge=unityyamlmerge diff
-*.anim -text merge=unityyamlmerge diff
-*.controller -text merge=unityyamlmerge diff
-*.overrideController -text merge=unityyamlmerge diff
-*.physicMaterial -text merge=unityyamlmerge diff
-*.physicsMaterial2D -text merge=unityyamlmerge diff
-*.playable -text merge=unityyamlmerge diff
-*.mask -text merge=unityyamlmerge diff
-*.brush -text merge=unityyamlmerge diff
-*.flare -text merge=unityyamlmerge diff
-*.fontsettings -text merge=unityyamlmerge diff
-*.guiskin -text merge=unityyamlmerge diff
-*.giparams -text merge=unityyamlmerge diff
-*.renderTexture -text merge=unityyamlmerge diff
-*.spriteatlas -text merge=unityyamlmerge diff
-*.terrainlayer -text merge=unityyamlmerge diff
-*.mixer -text merge=unityyamlmerge diff
-*.shadervariants -text merge=unityyamlmerge diff
+*.asset linguist-generated -text -merge=unityamlmerge
+*.mat linguist-generated -text -merge=unityamlmerge
+*.meta linguist-generated -text -merge=unityamlmerge
+*.prefab linguist-generated -text -merge=unityamlmerge
+*.unity linguist-generated -text -merge=unityamlmerge
 
 # Image formats
 *.psd filter=lfs diff=lfs merge=lfs -text
+*.afphoto filter=lfs diff=lfs merge=lfs -text
 *.jpg filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
 *.gif filter=lfs diff=lfs merge=lfs -text
 *.bmp filter=lfs diff=lfs merge=lfs -text
 *.tga filter=lfs diff=lfs merge=lfs -text
 *.tiff filter=lfs diff=lfs merge=lfs -text
-*.tif filter=lfs diff=lfs merge=lfs -text
 *.iff filter=lfs diff=lfs merge=lfs -text
 *.pict filter=lfs diff=lfs merge=lfs -text
 *.dds filter=lfs diff=lfs merge=lfs -text
-*.xcf filter=lfs diff=lfs merge=lfs -text
 
 # Audio formats
 *.mp3 filter=lfs diff=lfs merge=lfs -text
