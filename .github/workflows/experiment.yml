@@ -85,5 +85,5 @@ jobs:
         if: ${{ matrix.unityVersion == '2021.1.6f1' || matrix.unityVersion == '2020.1.6f1' || matrix.unityVersion == '2019.4.6f1' || matrix.unityVersion == '2019.3.6f1' || matrix.unityVersion == '2019.2.6f1' || matrix.unityVersion == '2019.1.6f1' || matrix.unityVersion == '2018.4.6f1' }}
         uses: actions/upload-artifact@v2
         with:
-          name: Build (${{ matrix.unityVersion }}/${{ matrix.targetPlatform }})
+          name: Build (${{ matrix.unityVersion }}-${{ matrix.targetPlatform }})
           path: build/${{ matrix.targetPlatform }}
