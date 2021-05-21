@@ -24,7 +24,7 @@ jobs:
           echo "::set-output name=versions::$VERSIONS"
 
   build:
-    name: ${{ matrix.unityVersion }} ${{ matrix.targetPlatform }} 🚀
+    name: ${{ matrix.unityVersion }} ${{ matrix.targetPlatform }} ${{ matrix.projectPath }} 🚀
     runs-on: ubuntu-latest
     needs: matrixBuilder
     strategy:
