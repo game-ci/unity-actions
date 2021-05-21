@@ -73,9 +73,12 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           unityVersion: ${{ matrix.unityVersion }}
 
-      - name: Sleep for retry
+      - name: Clean and sleep for retry
         if: steps.build-1.outcome == 'failure'
-        run: sleep 120
+        run: |
+          git add .
+          git reset --hard
+          sleep 120
 
       - name: Build (Retry)
         if: steps.build-1.outcome == 'failure'
