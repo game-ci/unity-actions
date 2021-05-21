@@ -31,9 +31,9 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - test-projects/2018.3-legacy-render-pipeline
-          - test-projects/2019.3-universal-render-pipeline
-          - test-projects/2019.3-high-definition-render-pipeline
+          - 2018.3-legacy-render-pipeline
+          - 2019.3-universal-render-pipeline
+          - 2019.3-high-definition-render-pipeline
         targetPlatform:
           - StandaloneLinux64
           - StandaloneWindows
@@ -74,7 +74,7 @@ jobs:
         uses: actions/cache@v2
         id: lib-cache
         with:
-          path: ${{ matrix.projectPath }}/Library
+          path: test-projects/${{ matrix.projectPath }}/Library
           key: Library-Experiment-Build-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
           restore-keys: |
             Library-Experiment-Build-
@@ -89,7 +89,7 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          projectPath: ${{ matrix.projectPath }}
+          projectPath: test-projects/${{ matrix.projectPath }}
           targetPlatform: ${{ matrix.targetPlatform }}
           unityVersion: ${{ matrix.unityVersion }}
 
@@ -107,7 +107,7 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          projectPath: ${{ matrix.projectPath }}
+          projectPath: test-projects/${{ matrix.projectPath }}
           targetPlatform: ${{ matrix.targetPlatform }}
           unityVersion: ${{ matrix.unityVersion }}
 
@@ -115,5 +115,5 @@ jobs:
 #        if: ${{ matrix.unityVersion == '2021.1.6f1' || matrix.unityVersion == '2020.1.6f1' || matrix.unityVersion == '2019.4.6f1' || matrix.unityVersion == '2019.3.6f1' || matrix.unityVersion == '2019.2.6f1' || matrix.unityVersion == '2019.1.6f1' || matrix.unityVersion == '2018.4.6f1' }}
         uses: actions/upload-artifact@v2
         with:
-          name: Build (${{ matrix.unityVersion }}-${{ matrix.targetPlatform }})
+          name: Build (${{ matrix.projectPath }}-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }})
           path: build/${{ matrix.targetPlatform }}
