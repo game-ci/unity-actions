@@ -75,11 +75,9 @@ jobs:
         id: lib-cache
         with:
           path: test-projects/${{ matrix.projectPath }}/Library
-          key: Library-Experiment-Build-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          key: Library-Experiment-Build-${{ matrix.projectPath }}-${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}
           restore-keys: |
-            Library-Experiment-Build-
-            Library-Experiment-
-            Library-
+            Library-Experiment-Build-${{ matrix.projectPath }}-${{ matrix.unityVersion }}-
 
       - name: Build
         id: build-1
