@@ -83,7 +83,7 @@ jobs:
         id: build-1
         continue-on-error: true
         timeout-minutes: 40
-        uses: game-ci/unity-builder@4e7125603b7544961022d5a1fd09094b00918abd
+        uses: game-ci/unity-builder@main
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
@@ -101,7 +101,7 @@ jobs:
       - name: Build (Retry)
         if: steps.build-1.outcome == 'failure'
         timeout-minutes: 40
-        uses: game-ci/unity-builder@4e7125603b7544961022d5a1fd09094b00918abd
+        uses: game-ci/unity-builder@main
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
