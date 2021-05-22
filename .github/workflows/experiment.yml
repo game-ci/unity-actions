@@ -1,0 +1,116 @@
+﻿name: Experiment 🧪
+
+#####################################################################################
+# Please be mindful when running this workflow, as it spins up quite a few runners. #
+#####################################################################################
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  matrixBuilder:
+    name: Build version matrix
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.buildMatrix.outputs.versions }}
+    steps:
+      - name: Build matrix for latest patch version
+        id: buildMatrix
+        run: |
+          # Latest patch versions as json array of strings.
+          VERSIONS=`npx unity-changeset list --versions --latest-patch --json --min 2019.3`
+          echo "Versions: $VERSIONS"
+          echo "::set-output name=versions::$VERSIONS"
+
+  build:
+    name: ${{ matrix.unityVersion }} ${{ matrix.targetPlatform }} ${{ matrix.projectPath }} 🚀
+    runs-on: ubuntu-latest
+    needs: matrixBuilder
+    strategy:
+      fail-fast: false
+      matrix:
+        projectPath:
+          - 2018.3-legacy-render-pipeline
+          - 2019.3-universal-render-pipeline
+          - 2019.3-high-definition-render-pipeline
+        targetPlatform:
+          - StandaloneLinux64
+          - StandaloneWindows
+          - StandaloneOSX
+          - iOS
+          - Android
+          - WebGL
+        unityVersion: ${{ fromJson(needs.matrixBuilder.outputs.versions) }}
+        # 2018.3+
+#        unityVersion: ["2021.1.7f1","2021.1.6f1","2021.1.5f1","2021.1.4f1","2021.1.3f1","2021.1.2f1","2021.1.1f1","2021.1.0f1","2020.3.8f1","2020.3.7f1","2020.3.6f1","2020.3.4f1","2020.3.3f1","2020.3.2f1","2020.3.1f1","2020.3.0f1","2020.2.7f1","2020.2.6f1","2020.2.5f1","2020.2.4f1","2020.2.3f1","2020.2.2f1","2020.2.1f1","2020.2.0f1","2020.1.17f1","2020.1.16f1","2020.1.15f1","2020.1.14f1","2020.1.13f1","2020.1.12f1","2020.1.11f1","2020.1.10f1","2020.1.9f1","2020.1.8f1","2020.1.7f1","2020.1.6f1","2020.1.5f1","2020.1.4f1","2020.1.3f1","2020.1.2f1","2020.1.1f1","2020.1.0f1","2019.4.26f1","2019.4.25f1","2019.4.24f1","2019.4.23f1","2019.4.22f1","2019.4.21f1","2019.4.20f1","2019.4.19f1","2019.4.18f1","2019.4.17f1","2019.4.16f1","2019.4.15f1","2019.4.14f1","2019.4.13f1","2019.4.12f1","2019.4.11f1","2019.4.10f1","2019.4.9f1","2019.4.8f1","2019.4.7f1","2019.4.6f1","2019.4.5f1","2019.4.4f1","2019.4.3f1","2019.4.2f1","2019.4.1f1","2019.4.0f1","2019.3.15f1","2019.3.14f1","2019.3.13f1","2019.3.12f1","2019.3.11f1","2019.3.10f1","2019.3.9f1","2019.3.8f1","2019.3.7f1","2019.3.6f1","2019.3.5f1","2019.3.4f1","2019.3.3f1","2019.3.2f1","2019.3.1f1","2019.3.0f6","2019.2.21f1","2019.2.20f1","2019.2.19f1","2019.2.18f1","2019.2.17f1","2019.2.16f1","2019.2.15f1","2019.2.14f1","2019.2.13f1","2019.2.12f1","2019.2.11f1","2019.2.10f1","2019.2.9f1","2019.2.8f1","2019.2.7f2","2019.2.6f1","2019.2.5f1","2019.2.4f1","2019.2.3f1","2019.2.2f1","2019.2.1f1","2019.2.0f1","2019.1.14f1","2019.1.13f1","2019.1.12f1","2019.1.11f1","2019.1.10f1","2019.1.9f1","2019.1.8f1","2019.1.7f1","2019.1.6f1","2019.1.5f1","2019.1.4f1","2019.1.3f1","2019.1.2f1","2019.1.1f1","2019.1.0f2","2018.4.35f1","2018.4.34f1","2018.4.33f1","2018.4.32f1","2018.4.31f1","2018.4.30f1","2018.4.29f1","2018.4.28f1","2018.4.27f1","2018.4.26f1","2018.4.25f1","2018.4.24f1","2018.4.23f1","2018.4.22f1","2018.4.21f1","2018.4.20f1","2018.4.19f1","2018.4.18f1","2018.4.17f1","2018.4.16f1","2018.4.15f1","2018.4.14f1","2018.4.13f1","2018.4.12f1","2018.4.11f1","2018.4.10f1","2018.4.9f1","2018.4.8f1","2018.4.7f1","2018.4.6f1","2018.4.5f1","2018.4.4f1","2018.4.3f1","2018.4.2f1","2018.4.1f1","2018.4.0f1","2018.3.14f1","2018.3.13f1","2018.3.12f1","2018.3.11f1","2018.3.10f1","2018.3.9f1","2018.3.8f1","2018.3.7f1","2018.3.6f1","2018.3.5f1","2018.3.4f1","2018.3.3f1","2018.3.2f1","2018.3.1f1","2018.3.0f2"]
+        # 2019.3+
+#        unityVersion: ["2021.1.7f1","2021.1.6f1","2021.1.5f1","2021.1.4f1","2021.1.3f1","2021.1.2f1","2021.1.1f1","2021.1.0f1","2020.3.8f1","2020.3.7f1","2020.3.6f1","2020.3.4f1","2020.3.3f1","2020.3.2f1","2020.3.1f1","2020.3.0f1","2020.2.7f1","2020.2.6f1","2020.2.5f1","2020.2.4f1","2020.2.3f1","2020.2.2f1","2020.2.1f1","2020.2.0f1","2020.1.17f1","2020.1.16f1","2020.1.15f1","2020.1.14f1","2020.1.13f1","2020.1.12f1","2020.1.11f1","2020.1.10f1","2020.1.9f1","2020.1.8f1","2020.1.7f1","2020.1.6f1","2019.4.26f1","2019.4.25f1","2019.4.24f1","2019.4.23f1","2019.4.22f1","2019.4.21f1","2019.4.20f1","2019.4.19f1","2019.4.18f1","2019.4.17f1","2019.4.16f1","2019.4.15f1","2019.4.14f1","2019.4.13f1","2019.4.12f1","2019.4.11f1","2019.4.10f1","2019.4.9f1","2019.4.8f1","2019.4.7f1","2019.4.6f1","2019.4.5f1","2019.4.4f1","2019.4.3f1","2019.4.2f1","2019.4.1f1","2019.4.0f1","2019.3.15f1","2019.3.14f1","2019.3.13f1","2019.3.12f1","2019.3.11f1","2019.3.10f1","2019.3.9f1","2019.3.8f1","2019.3.7f1","2019.3.6f1","2019.3.5f1","2019.3.4f1","2019.3.3f1","2019.3.2f1","2019.3.1f1","2019.3.0f6"]
+        # Utterly broken - we are no longer supporting these
+#        unityVersion: ["2020.1.5f1","2020.1.4f1","2020.1.3f1","2020.1.2f1","2020.1.1f1","2020.1.0f1"]
+
+    steps:
+      # Workaround: https://github.com/actions/checkout/issues/165#issuecomment-657673315
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create LFS file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+
+      - name: Restore LFS cache
+        uses: actions/cache@v2
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
+
+      - name: Restore Library cache
+        uses: actions/cache@v2
+        id: lib-cache
+        with:
+          path: test-projects/${{ matrix.projectPath }}/Library
+          key: Library-Experiment-Build-${{ matrix.projectPath }}-${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-Experiment-Build-${{ matrix.projectPath }}-${{ matrix.unityVersion }}-
+
+      - name: Build
+        id: build-1
+        continue-on-error: true
+        timeout-minutes: 40
+        uses: game-ci/unity-builder@4e7125603b7544961022d5a1fd09094b00918abd
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: test-projects/${{ matrix.projectPath }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+          unityVersion: ${{ matrix.unityVersion }}
+
+      - name: Clean and sleep for retry
+        if: steps.build-1.outcome == 'failure'
+        run: |
+          git add .
+          git reset --hard
+          sleep 120
+
+      - name: Build (Retry)
+        if: steps.build-1.outcome == 'failure'
+        timeout-minutes: 40
+        uses: game-ci/unity-builder@4e7125603b7544961022d5a1fd09094b00918abd
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: test-projects/${{ matrix.projectPath }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+          unityVersion: ${{ matrix.unityVersion }}
+
+      - name: Upload build artifacts
+#        if: ${{ matrix.unityVersion == '2021.1.6f1' || matrix.unityVersion == '2020.1.6f1' || matrix.unityVersion == '2019.4.6f1' || matrix.unityVersion == '2019.3.6f1' || matrix.unityVersion == '2019.2.6f1' || matrix.unityVersion == '2019.1.6f1' || matrix.unityVersion == '2018.4.6f1' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build (${{ matrix.projectPath }}-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }})
+          path: build/${{ matrix.targetPlatform }}
