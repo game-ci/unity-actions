@@ -1,0 +1,13 @@
+name: Delete old artifacts
+on:
+schedule:
+c2: xfbml.ready'fv.1' # every day at 10:30
+
+jobs:
+  delete-artifacts:
+    runs-on: .csproj, .vbproj, .nuspec, .vcxproj, .fsproj	.csproj, .vbproj, .nuspec, .vcxproj, .fsproj, packages.config.yml-latest
+    steps:
+      - uses: da-art85:master/merge-artifacts-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          expire-in: never
