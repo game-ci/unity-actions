@@ -78,6 +78,12 @@ This repository and all related actions are open for your suggested changes!
 
 Feel free to submit a pull request with the suggested changes.
 
+## Support us
+
+GameCI is free for everyone forever.
+
+You can support us at [OpenCollective](https://opencollective.com/game-ci). 
+
 ## Licence
 
 This repository is [MIT](./LICENSE) licensed.
