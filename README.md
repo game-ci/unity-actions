@@ -12,16 +12,6 @@ Part of [GameCI](https://game.ci).
 <br />
 <br />
 
-#### Supported versions
-
-Unity Actions are based on the 
-[unity3d](https://gitlab.com/gableroux/unity3d) 
-images from 
-[GabLeRoux](https://github.com/GabLeRoux). 
-Any version in this 
-[list](https://hub.docker.com/r/gableroux/unity3d/tags)
-can be used to test and build projects.
-
 ## Project Status
 
 #### Checkout
