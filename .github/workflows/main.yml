@@ -39,13 +39,13 @@ jobs:
 
       # Test
       - name: Run tests
-        uses: webbertakken/unity-test-runner@v2
+        uses: game-ci/unity-test-runner@v2
         with:
           projectPath: test-projects/test-project
 
       # Build
       - name: Build project
-        uses: webbertakken/unity-builder@v2
+        uses: game-ci/unity-builder@v2
         with:
           projectPath: test-projects/test-project
           targetPlatform: WebGL
@@ -70,7 +70,7 @@ jobs:
       - uses: actions/checkout@v2
 
       # Request manual activation file
-      - uses: webbertakken/unity-request-manual-activation-file@v2
+      - uses: game-ci/unity-request-activation-file@v2
         id: getManualLicenseFile
 
       # Upload artifact (Unity_v20XX.X.XXXX.alf)
@@ -84,15 +84,15 @@ jobs:
 #    runs-on: ubuntu-latest
 #    steps:
 #      - uses: actions/checkout@v2
-#      - uses: webbertakken/unity-activate@v2
+#      - uses: game-ci/unity-activate@v2
 #
 #  activateAndThenReturnLicense:
 #    name: returnLicense 🎈
 #    runs-on: ubuntu-latest
 #    steps:
 #      - uses: actions/checkout@v2
-#      - uses: webbertakken/unity-activate@v2
-#      - uses: webbertakken/unity-return-license@v2
+#      - uses: game-ci/unity-activate@v2
+#      - uses: game-ci/unity-return-license@v2
 
   testRunnerInEditMode:
     name: Test in editmode 📝
@@ -126,7 +126,7 @@ jobs:
             Library-test-
 
       # Configure test runner
-      - uses: webbertakken/unity-test-runner@v2
+      - uses: game-ci/unity-test-runner@v2
         id: testRunner
         with:
           projectPath: test-projects/test-project
@@ -171,7 +171,7 @@ jobs:
             Library-
 
       # Configure test runner
-      - uses: webbertakken/unity-test-runner@v2
+      - uses: game-ci/unity-test-runner@v2
         id: testRunner
         with:
           projectPath: test-projects/test-project
@@ -184,8 +184,14 @@ jobs:
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
   testRunnerInAllModes:
-    name: Test all modes ✨
+    name: Test in ${{ matrix.testMode }} ✨
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        testMode:
+          - EditMode
+          - PlayMode
     steps:
       # Checkout repository (required to test local actions)
       - name: Checkout code
@@ -217,16 +223,17 @@ jobs:
             Library-
 
       # Configure test runner
-      - uses: webbertakken/unity-test-runner@v2
+      - uses: game-ci/unity-test-runner@v2.0-alpha-5
         id: testRunner
         with:
-          projectPath: test-projects/test-project
-          testMode: all
+          testMode: ${{ matrix.testMode }}
+          checkName: ${{ matrix.testMode }} test results
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
 
       # Upload artifacts
       - uses: actions/upload-artifact@v2
         with:
-          name: Test results (all modes)
+          name: Test results (${{ matrix.testMode }})
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
   #
@@ -275,7 +282,7 @@ jobs:
           restore-keys: |
             Library-${{ matrix.projectPath }}-buildAndTest-
             Library-${{ matrix.projectPath }}-
-      - uses: webbertakken/unity-test-runner@v2
+      - uses: game-ci/unity-test-runner@v2
         id: testRunner
         with:
           projectPath: ${{ matrix.projectPath }}
@@ -283,7 +290,7 @@ jobs:
         with:
           name: Test results (all modes)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
-      - uses: webbertakken/unity-builder@v2
+      - uses: game-ci/unity-builder@v2
         with:
           projectPath: ${{ matrix.projectPath }}
           targetPlatform: ${{ matrix.targetPlatform }}
