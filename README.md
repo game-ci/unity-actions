@@ -8,7 +8,7 @@ Part of [GameCI](https://game.ci).
 <br />
 <br />
 
-[![Actions status](https://github.com/game-ci/unity-actions/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-actions/actions?query=branch%3Amain+event%3Apush+workflow%3A"Actions%20%F0%9F%98%8E")
+[![Actions status](https://github.com/game-ci/unity-actions/actions/workflows/main.yml/badge.svg)](https://github.com/game-ci/unity-actions/actions/workflows/main.yml)
 <br />
 <br />
 
@@ -26,7 +26,7 @@ Part of [GameCI](https://game.ci).
 |-------------------------|------|--------|
 | [Request activation file](https://github.com/marketplace/actions/unity-request-activation-file) | ✔ | [![Actions status](https://github.com/game-ci/unity-request-activation-file/actions/workflows/main.yml/badge.svg)](https://github.com/game-ci/unity-request-activation-file) |
 | [Activate license](https://github.com/marketplace/actions/unity-activate) | ✔ | [![Actions status](https://github.com/game-ci/unity-activate/actions/workflows/main.yml/badge.svg)](https://github.com/game-ci/unity-activate) |
-| [Return license](https://github.com/marketplace/actions/unity-return-license) | ✔ | [![Actions status](https://github.com/game-ci/unity-return-license/workflows/Actions%20%F0%9F%98%8E/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-return-license) |
+| [Return license](https://github.com/marketplace/actions/unity-return-license) | ✔ | [![Actions status](https://github.com/game-ci/unity-return-license/actions/workflows/main.yml/badge.svg)](https://github.com/game-ci/unity-return-license) |
 | [Caching dependencies](https://github.com/marketplace/actions/cache)  | ✔ | Native support |
 
 #### Test
@@ -48,10 +48,10 @@ Part of [GameCI](https://game.ci).
 | [Build for Android](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/game-ci/unity-builder/workflows/Builds/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-builder#android) |
 | [Build for iOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/game-ci/unity-builder/workflows/Builds/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-builder#ios) |
 | [Build for Windows store](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
-| [Build for PS4](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
-| [Build for XboxOne](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
 | [Build for tvOS](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
-| [Build for Switch](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Build for PS4](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
+| [Build for XboxOne](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
+| [Build for Switch](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
 
 ## How to use
 
