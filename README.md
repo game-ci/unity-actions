@@ -49,6 +49,9 @@ Part of [GameCI](https://game.ci).
 | [Build for iOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
 | [Build for Windows store](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml) |
 | [Build for tvOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml) |
+| [Build for Xbox](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
+| [Build for Playstation](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
+| [Build for Switch](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
 
 ## How to use
 
