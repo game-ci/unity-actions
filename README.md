@@ -39,19 +39,26 @@ Part of [GameCI](https://game.ci).
 
 #### Build
 
-| Description             | Done | Status |
+| Target Platform             | Done | Status |
 |-------------------------|------|--------|
-| [Build for WebGL](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
-| [Build for Windows](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
-| [Build for Linux](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
-| [Build for MacOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
-| [Build for Android](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
-| [Build for iOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
-| [Build for Windows store](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml) |
-| [Build for tvOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml) |
-| [Build for Xbox](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
-| [Build for Playstation](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
-| [Build for Switch](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
+| [WebGL](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
+| [Windows Mono](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
+| [Linux Mono](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
+| [MacOS Mono](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
+| [Windows IL2CPP](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/game-ci/unity-builder/workflows/Builds/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-builder#windows) |
+| [Linux IL2CPP](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions status](https://github.com/game-ci/unity-builder/workflows/Builds/badge.svg?event=push&branch=main)](https://github.com/game-ci/unity-builder#linux) |
+| [MacOS IL2CPP](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Android](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
+| [iOS](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/build-tests.yml) |
+| [Universal Windows Platform](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml) |
+| [AppleTV](https://github.com/marketplace/actions/unity-builder) | ✔ | [![Actions Status](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml/badge.svg?branch=main)](https://github.com/game-ci/unity-builder/actions/workflows/windows-build-tests.yml) |
+| [Windows Dedicated Server](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Linux Dedicated Server](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Mac Dedicated Server](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Lumin](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
+| [Xbox](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
+| [Playstation](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
+| [Switch](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
 
 ## How to use
 
