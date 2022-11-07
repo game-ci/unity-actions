@@ -56,9 +56,9 @@ Part of [GameCI](https://game.ci).
 | [Linux Dedicated Server](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
 | [macOS Dedicated Server](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
 | [Lumin](https://github.com/marketplace/actions/unity-builder) | ❌ | In progress |
-| [Xbox](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
-| [Playstation](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
-| [Switch](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires license |
+| [Xbox](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires NDA |
+| [Playstation](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires NDA |
+| [Switch](https://github.com/marketplace/actions/unity-builder) | ❌ | Requires NDA |
 
 ## How to use
 
